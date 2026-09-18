@@ -64,11 +64,11 @@
 		"./package.json": "./package.json"
 	},
 	"publishConfig": {
-		"access": "public",
-		"provenance": true
+		"access": "public"
 	},
 	"scripts": {
 		"build": "node scripts/build.mjs",
+		"prepublishOnly": "pnpm build",
 		"check": "tsc --noEmit",
 		"lint": "prettier --check . && eslint .",
 		"knip": "knip",
@@ -79,7 +79,7 @@
 		"storybook": "storybook dev -p 6007",
 		"build-storybook": "storybook build",
 		"changeset": "changeset",
-		"release": "pnpm build && changeset publish"
+		"release": "changeset publish"
 	},
 	"peerDependencies": {
 		"react": "^19",
