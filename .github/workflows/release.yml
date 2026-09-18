@@ -7,7 +7,9 @@
 # Publishing uses npm trusted publishing: GitHub's OIDC token proves this workflow is the
 # one registered on npmjs.com for the package, so no NPM_TOKEN secret exists anywhere.
 # `id-token: write` is what lets the job request that token, and it also signs the
-# provenance statement npm shows on the package page.
+# provenance statement npm shows on the package page — trusted publishing attaches
+# provenance automatically, so package.json does not ask for it (a local publish cannot
+# produce it). prepublishOnly builds the package before every publish, here or local.
 
 name: Release
 
