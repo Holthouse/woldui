@@ -1,0 +1,43 @@
+# Releases @woldui/react with Changesets.
+#
+# On every push to main, changesets/action either opens (or updates) a "Version Packages"
+# pull request collecting the pending changesets, or — when that pull request has just
+# been merged — publishes the new version to npm.
+#
+# Publishing uses npm trusted publishing: GitHub's OIDC token proves this workflow is the
+# one registered on npmjs.com for the package, so no NPM_TOKEN secret exists anywhere.
+# `id-token: write` is what lets the job request that token, and it also signs the
+# provenance statement npm shows on the package page.
+
+name: Release
+
+on:
+  push:
+    branches: [main]
+
+concurrency: release-${{ github.ref }}
+
+permissions:
+  contents: write
+  pull-requests: write
+  id-token: write
+
+jobs:
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'pnpm'
+          registry-url: 'https://registry.npmjs.org'
+      - run: pnpm install --frozen-lockfile
+
+      - uses: changesets/action@v2
+        with:
+          publish-script: pnpm release
+          commit-message: 'chore: Releases a new version'
+          pr-title: 'chore: Releases a new version'

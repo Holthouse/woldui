@@ -1,0 +1,11 @@
+node_modules/
+dist/
+coverage/
+storybook-static/
+*.tsbuildinfo
+*.tgz
+
+# Diagnostic screenshots from browser tests
+__screenshots__/
+.vitest-attachments/
+*.png
