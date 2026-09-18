@@ -1,6 +1,6 @@
 {
 	"name": "@woldui/react",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"description": "A HeroUI-style design system for React and Tailwind CSS v4, built on shadcn/ui and Radix.",
 	"license": "MIT",
 	"author": "Holthouse",
