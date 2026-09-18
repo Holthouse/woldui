@@ -32,6 +32,11 @@ Tailwind, so don't import `tailwindcss` again:
 The theme tells Tailwind to scan WoldUI's own files. Without that, Tailwind skips
 `node_modules` and the components render unstyled.
 
+Because it scans every component, your stylesheet includes the classes for all of them,
+not just the ones you import. That comes to about 185 KB uncompressed (about 28 KB
+gzipped) with the IBM Plex Sans font files served separately. Import-per-path still keeps
+the JavaScript to what you use.
+
 **2. Import components by path.** There's no root export, so each import brings in only
 the component you asked for (see [No barrel](docs/guidelines.md#no-barrel)):
 
