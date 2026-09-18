@@ -1,0 +1,141 @@
+{
+	"name": "@woldui/react",
+	"version": "0.1.0",
+	"description": "A HeroUI-style design system for React and Tailwind CSS v4, built on shadcn/ui and Radix.",
+	"license": "MIT",
+	"author": "Holthouse",
+	"homepage": "https://github.com/Holthouse/woldui#readme",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Holthouse/woldui.git"
+	},
+	"bugs": {
+		"url": "https://github.com/Holthouse/woldui/issues"
+	},
+	"keywords": [
+		"react",
+		"tailwindcss",
+		"design-system",
+		"shadcn",
+		"radix-ui",
+		"heroui",
+		"components",
+		"ui"
+	],
+	"type": "module",
+	"packageManager": "pnpm@10.34.5",
+	"engines": {
+		"node": ">=20"
+	},
+	"sideEffects": [
+		"**/*.css"
+	],
+	"files": [
+		"dist",
+		"src",
+		"!src/**/*.stories.tsx",
+		"!src/**/*.test.ts",
+		"!src/**/*.test.tsx",
+		"LICENSE",
+		"THIRD_PARTY_NOTICES.md"
+	],
+	"exports": {
+		"./globals.css": "./dist/styles/globals.css",
+		"./components/*": {
+			"woldui-source": "./src/components/*.tsx",
+			"types": "./dist/components/*.d.ts",
+			"default": "./dist/components/*.js"
+		},
+		"./lib/motion/primitives": {
+			"woldui-source": "./src/lib/motion/primitives.tsx",
+			"types": "./dist/lib/motion/primitives.d.ts",
+			"default": "./dist/lib/motion/primitives.js"
+		},
+		"./lib/*": {
+			"woldui-source": "./src/lib/*.ts",
+			"types": "./dist/lib/*.d.ts",
+			"default": "./dist/lib/*.js"
+		},
+		"./hooks/*": {
+			"woldui-source": "./src/hooks/*.ts",
+			"types": "./dist/hooks/*.d.ts",
+			"default": "./dist/hooks/*.js"
+		},
+		"./package.json": "./package.json"
+	},
+	"publishConfig": {
+		"access": "public",
+		"provenance": true
+	},
+	"scripts": {
+		"build": "node scripts/build.mjs",
+		"check": "tsc --noEmit",
+		"lint": "prettier --check . && eslint .",
+		"knip": "knip",
+		"format": "prettier --write .",
+		"test:unit": "vitest",
+		"test": "vitest --run",
+		"check:package": "publint --strict && attw --pack . --profile esm-only --entrypoints ./components/ui/button ./components/ui/sidebar ./components/atoms/field ./lib/motion/primitives ./lib/motion/tokens ./lib/utils ./hooks/use-mobile",
+		"storybook": "storybook dev -p 6007",
+		"build-storybook": "storybook build",
+		"changeset": "changeset",
+		"release": "pnpm build && changeset publish"
+	},
+	"peerDependencies": {
+		"react": "^19",
+		"react-dom": "^19",
+		"tailwindcss": "^4"
+	},
+	"dependencies": {
+		"@base-ui/react": "^1.8.0",
+		"@fontsource-variable/ibm-plex-sans": "^5.3.0",
+		"@shadcn/react": "^0.3.1",
+		"@tailwindcss/typography": "^0.5.20",
+		"class-variance-authority": "^0.7.1",
+		"cmdk": "^1.1.1",
+		"cn": "^0.3.0",
+		"embla-carousel-react": "^8.6.0",
+		"input-otp": "^1.5.0",
+		"lucide-react": "^1.46.0",
+		"motion": "^13.2.0",
+		"next-themes": "^0.4.6",
+		"radix-ui": "^1.6.7",
+		"react-day-picker": "^10.0.1",
+		"react-resizable-panels": "^4.12.4",
+		"recharts": "3.8.0",
+		"sonner": "^2.0.8",
+		"tw-animate-css": "^1.4.0",
+		"vaul": "^1.1.2"
+	},
+	"devDependencies": {
+		"@arethetypeswrong/cli": "^0.18.5",
+		"@changesets/cli": "^2.31.1",
+		"@storybook/addon-a11y": "^10.6.0",
+		"@storybook/addon-docs": "^10.6.0",
+		"@storybook/addon-themes": "^10.6.0",
+		"@storybook/addon-vitest": "^10.6.0",
+		"@storybook/react-vite": "^10.6.0",
+		"@tailwindcss/vite": "^4.3.2",
+		"@types/node": "^24.13.5",
+		"@types/react": "^19",
+		"@types/react-dom": "^19",
+		"@vitejs/plugin-react": "^6.1.1",
+		"@vitest/browser-playwright": "^4.1.10",
+		"eslint": "^9",
+		"eslint-plugin-react-hooks": "^7.1.1",
+		"knip": "^6.35.1",
+		"playwright": "^1.61.1",
+		"prettier": "^3.9.5",
+		"prettier-plugin-tailwindcss": "^0.8.0",
+		"publint": "^0.3.24",
+		"react": "19.2.8",
+		"react-dom": "19.2.8",
+		"storybook": "^10.6.0",
+		"tailwindcss": "^4",
+		"typescript": "^5",
+		"typescript-eslint": "^8.70.0",
+		"vite": "^8.1.4",
+		"vitest": "^4.1.10",
+		"vitest-browser-react": "^2.3.0"
+	}
+}

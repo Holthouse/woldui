@@ -1,0 +1,10 @@
+pnpm-lock.yaml
+dist/
+storybook-static/
+CHANGELOG.md
+.changeset/*.md
+
+# shadcn vendor code, not ours to format
+src/components/ui
+src/hooks/use-mobile.ts
+src/styles/shadcn.css
