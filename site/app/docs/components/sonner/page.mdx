@@ -43,7 +43,7 @@ Then call `toast()` from anywhere. It comes from the `sonner` package itself, no
 
 ## Types
 
-`toast.success`, `toast.info`, `toast.warning` and `toast.error` each get their own icon.
+`toast.success`, `toast.info`, `toast.warning` and `toast.error` each get their own icon, and are tinted with that tone: its surface, its border and text at the step that stays legible on the tint in both themes. Pass `richColors={false}` to `Toaster` if you would rather every toast used the neutral popover surface.
 
 <Example name="sonner/types">
 	<Types />
