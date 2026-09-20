@@ -1,0 +1,45 @@
+import Usage from '@/content/examples/input-otp/usage';
+import Controlled from '@/content/examples/input-otp/controlled';
+
+export const metadata = { title: 'Input OTP' };
+
+<DocHeader
+	title="Input OTP"
+	description="A one-time code field drawn as separate slots, one character each."
+	source="components/ui/input-otp"
+	imports={['InputOTP', 'InputOTPGroup', 'InputOTPSlot', 'InputOTPSeparator']}
+	primitive={{ name: 'input-otp', href: 'https://input-otp.rodz.dev' }}
+/>
+
+## Usage
+
+<Example name="input-otp/usage">
+	<Usage />
+</Example>
+
+`maxLength` sets how many characters the code has, and each `InputOTPSlot` shows the character at its `index`. `InputOTPGroup` and `InputOTPSeparator` only split the slots visually.
+
+## Controlled
+
+Pass `value` and `onChange` to read the code as it is typed. `pattern` restricts which characters are accepted, and `inputMode="numeric"` brings up the number pad on phones.
+
+<Example name="input-otp/controlled">
+	<Controlled />
+</Example>
+
+## Accessibility
+
+- Behind the slots is one real `<input>`, so typing, pasting a whole code, deleting and SMS autofill (`autoComplete="one-time-code"`) all work as they would in a plain field.
+- Props such as `aria-label` and `id` go to that input. Give it a label; the slots themselves are not announced.
+- Announce progress or the result of a submit in text outside the field, as the controlled example does with `aria-live`.
+
+## API
+
+<PropsTable
+	of="components/ui/input-otp#InputOTP"
+	inherits={{
+		name: 'input-otp OTPInput',
+		href: 'https://github.com/guilhermerodz/input-otp#api-reference'
+	}}
+/>
+<PropsTable of="components/ui/input-otp#InputOTPSlot" inherits={{ name: 'the native <div>' }} />

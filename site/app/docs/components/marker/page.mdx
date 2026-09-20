@@ -1,0 +1,39 @@
+import Usage from '@/content/examples/marker/usage';
+import Variants from '@/content/examples/marker/variants';
+
+export const metadata = { title: 'Marker' };
+
+<DocHeader
+	title="Marker"
+	description="A quiet one-line note in a feed or conversation: a system event, a date divider or a pinned notice."
+	source="components/ui/marker"
+	imports={['Marker', 'MarkerIcon', 'MarkerContent']}
+/>
+
+## Usage
+
+<Example name="marker/usage">
+	<Usage />
+</Example>
+
+A marker is small, muted text with an optional icon. Links inside it are underlined and brighten on hover.
+
+## Variants
+
+`separator` draws a rule on each side of centred text, for date dividers. `border` adds a rule underneath.
+
+<Example name="marker/variants">
+	<Variants />
+</Example>
+
+## Accessibility
+
+- `MarkerIcon` is `aria-hidden`, so the text has to carry the meaning on its own.
+- The rules drawn by `separator` and `border` are CSS, not `<hr>` elements, so they aren't announced. Only the text is read.
+- Markers use `muted-foreground`, which passes AA on the page background. Don't place them on a `muted` fill.
+
+## API
+
+<PropsTable of="components/ui/marker#Marker" inherits={{ name: 'the native <div>' }} />
+<PropsTable of="components/ui/marker#MarkerIcon" inherits={{ name: 'the native <span>' }} />
+<PropsTable of="components/ui/marker#MarkerContent" inherits={{ name: 'the native <span>' }} />

@@ -1,0 +1,71 @@
+import Usage from '@/content/examples/questionnaire/usage';
+import TextAnswer from '@/content/examples/questionnaire/text-answer';
+
+export const metadata = { title: 'Questionnaire' };
+
+<DocHeader
+	title="Questionnaire"
+	description="A form that asks one question at a time, with progress and back, skip and next controls. Use it for onboarding and short surveys."
+	source="components/ui/questionnaire"
+	imports={[
+		'Questionnaire',
+		'QuestionnaireProgress',
+		'QuestionnaireItem',
+		'QuestionnaireTitle',
+		'QuestionnaireChoices',
+		'QuestionnaireChoice',
+		'QuestionnaireActions',
+		'QuestionnaireNext'
+	]}
+	primitive={{ name: '@shadcn/react', href: 'https://www.npmjs.com/package/@shadcn/react' }}
+/>
+
+## Usage
+
+<Example name="questionnaire/usage" align="start" tall>
+	<Usage />
+</Example>
+
+`Questionnaire` is a `<form>`. Each `QuestionnaireItem` is one step, named by `name`, and only the current step shows. `QuestionnaireChoice`s are radio buttons, or checkboxes when the item is `multiple`. `QuestionnaireProgress` counts the steps. In `QuestionnaireActions`, Next hides on the last step and Submit takes its place. Enter presses whichever of the two is showing.
+
+## Text answers and skipping
+
+`QuestionnaireInput` takes a typed answer. A `required` item blocks Next until it is answered, and `QuestionnaireError` shows why. `QuestionnaireSkip` moves past an optional item, and `QuestionnaireChoiceDescription` adds a second line to a choice.
+
+<Example name="questionnaire/text-answer" align="start" tall>
+	<TextAnswer />
+</Example>
+
+## Accessibility
+
+- Each item is a `<fieldset>` and its title a `<legend>`, so the question names the group of choices.
+- Choices are native radio and checkbox inputs under the visible card, so Tab, the arrow keys and Space behave as usual.
+- Moving between items sends focus to the new question. Hidden buttons get the `hidden` and `inert` attributes, so they leave the tab order.
+- A text input inside an item needs a name of its own: an `aria-label` or a visible label.
+
+## API
+
+<PropsTable
+	of="components/ui/questionnaire#Questionnaire"
+	inherits={{ name: 'the native <form>' }}
+/>
+<PropsTable
+	of="components/ui/questionnaire#QuestionnaireItem"
+	inherits={{ name: 'the native <fieldset>' }}
+/>
+<PropsTable
+	of="components/ui/questionnaire#QuestionnaireNext"
+	inherits={{ name: 'the native <button>' }}
+/>
+<PropsTable
+	of="components/ui/questionnaire#QuestionnairePrevious"
+	inherits={{ name: 'the native <button>' }}
+/>
+<PropsTable
+	of="components/ui/questionnaire#QuestionnaireSkip"
+	inherits={{ name: 'the native <button>' }}
+/>
+<PropsTable
+	of="components/ui/questionnaire#QuestionnaireSubmit"
+	inherits={{ name: 'the native <button>' }}
+/>

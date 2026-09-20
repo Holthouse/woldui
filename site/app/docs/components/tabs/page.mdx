@@ -1,0 +1,104 @@
+import Usage from '@/content/examples/tabs/usage';
+import Line from '@/content/examples/tabs/line';
+import Vertical from '@/content/examples/tabs/vertical';
+import Icons from '@/content/examples/tabs/icons';
+import Disabled from '@/content/examples/tabs/disabled';
+import Controlled from '@/content/examples/tabs/controlled';
+
+export const metadata = { title: 'Tabs' };
+
+<DocHeader
+	title="Tabs"
+	description="Switches between related panels of content in one place, one panel at a time."
+	source="components/ui/tabs"
+	imports={['Tabs', 'TabsList', 'TabsTrigger', 'TabsContent']}
+	primitive={{
+		name: 'Radix Tabs',
+		href: 'https://www.radix-ui.com/primitives/docs/components/tabs'
+	}}
+/>
+
+## Usage
+
+<Example name="tabs/usage" align="start">
+	<Usage />
+</Example>
+
+Switch tabs: the pill slides from one trigger to the next rather than reappearing. That is a shared-layout animation (Motion's `layoutId`), the one movement here that CSS cannot express. Each `TabsList` scopes its own pill, so two tab sets on a page never animate into each other.
+
+## Line
+
+`variant="line"` on `TabsList` swaps the pill for an underline that slides the same way.
+
+<Example name="tabs/line" align="start">
+	<Line />
+</Example>
+
+## Vertical
+
+`orientation="vertical"` stacks the triggers beside the panel. The arrow keys follow the orientation: Up and Down move between vertical tabs.
+
+<Example name="tabs/vertical" align="start">
+	<Vertical />
+</Example>
+
+## With icons
+
+<Example name="tabs/icons">
+	<Icons />
+</Example>
+
+## Disabled
+
+A disabled trigger is skipped by the keyboard and cannot be selected.
+
+<Example name="tabs/disabled">
+	<Disabled />
+</Example>
+
+## Controlled
+
+Pass `value` and `onValueChange` to drive the selected tab from your own state. The pill still slides when the value changes from outside.
+
+<Example name="tabs/controlled">
+	<Controlled />
+</Example>
+
+## Accessibility
+
+- The list, triggers and panels get the `tablist`, `tab` and `tabpanel` roles, with `aria-selected` and `aria-controls` wired up by Radix.
+- Tab moves focus into the list and then on to the active panel. The arrow keys move between triggers, and Home and End jump to the first and last.
+- By default a trigger activates as soon as it gets focus. Set `activationMode="manual"` on `Tabs` when switching is expensive, so the user presses Enter or Space to confirm.
+- The sliding pill is `aria-hidden`. Under `prefers-reduced-motion` it jumps to the new trigger instead of travelling.
+- Icons inside a trigger are decorative. Keep a text label, or give an icon-only trigger an `aria-label`.
+
+## API
+
+<PropsTable
+	of="components/ui/tabs#Tabs"
+	inherits={{
+		name: 'Radix Tabs Root',
+		href: 'https://www.radix-ui.com/primitives/docs/components/tabs#root'
+	}}
+/>
+<PropsTable
+	of="components/ui/tabs#TabsList"
+	inherits={{
+		name: 'Radix Tabs List',
+		href: 'https://www.radix-ui.com/primitives/docs/components/tabs#list'
+	}}
+/>
+<PropsTable
+	of="components/ui/tabs#TabsTrigger"
+	inherits={{
+		name: 'Radix Tabs Trigger',
+		href: 'https://www.radix-ui.com/primitives/docs/components/tabs#trigger'
+	}}
+/>
+<PropsTable
+	of="components/ui/tabs#TabsContent"
+	inherits={{
+		name: 'Radix Tabs Content',
+		href: 'https://www.radix-ui.com/primitives/docs/components/tabs#content'
+	}}
+/>

@@ -1,0 +1,50 @@
+import Usage from '@/content/examples/bubble/usage';
+import Variants from '@/content/examples/bubble/variants';
+import Reactions from '@/content/examples/bubble/reactions';
+
+export const metadata = { title: 'Bubble' };
+
+<DocHeader
+	title="Bubble"
+	description="A chat bubble: one message's text in a rounded surface, aligned to the side of whoever sent it."
+	source="components/ui/bubble"
+	imports={['BubbleGroup', 'Bubble', 'BubbleContent', 'BubbleReactions']}
+/>
+
+## Usage
+
+<Example name="bubble/usage">
+	<Usage />
+</Example>
+
+`align="end"` pushes a bubble to the right, for the current user's messages. `BubbleGroup` stacks consecutive bubbles. Inside a [Message](/docs/components/message) with `align="end"`, bubbles follow it without their own `align`.
+
+## Variants
+
+`variant` sets the surface. `ghost` drops the surface and padding altogether, for long replies that read better as plain text.
+
+<Example name="bubble/variants">
+	<Variants />
+</Example>
+
+## Reactions
+
+`BubbleReactions` pins a small pill to the bubble's edge. `side` puts it on the `top` or `bottom` edge and `align` on the `start` or `end` corner. It hangs outside the bubble, so leave room with a larger gap.
+
+<Example name="bubble/reactions">
+	<Reactions />
+</Example>
+
+## Accessibility
+
+- Bubbles are plain `<div>`s. Put a sequence of messages in a list or a `role="log"` container, so a screen reader knows where the conversation starts and ends.
+- Alignment is visual only. Say who sent a message in text, for example in a `MessageHeader`.
+- `BubbleContent asChild` can render a `<button>` or `<a>`, and it then gets a hover state and a focus ring.
+- Emoji reactions read poorly. Hide the emoji with `aria-hidden` and describe the reaction in `sr-only` text.
+
+## API
+
+<PropsTable of="components/ui/bubble#BubbleGroup" inherits={{ name: 'the native <div>' }} />
+<PropsTable of="components/ui/bubble#Bubble" inherits={{ name: 'the native <div>' }} />
+<PropsTable of="components/ui/bubble#BubbleContent" inherits={{ name: 'the native <div>' }} />
+<PropsTable of="components/ui/bubble#BubbleReactions" inherits={{ name: 'the native <div>' }} />

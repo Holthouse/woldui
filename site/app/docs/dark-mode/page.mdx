@@ -1,0 +1,67 @@
+export const metadata = { title: 'Dark mode' };
+
+<DocHeader
+	title="Dark mode"
+	description="The dark theme is keyed to a `.dark` class on an ancestor. Add the class and every token switches."
+/>
+
+## How it works
+
+The theme defines each variable twice: under `:root` for light, and under `.dark` for dark. Components only use the variables, so they follow whichever set applies. The neutral scale inverts in dark mode; the accent scales keep their order.
+
+## With next-themes
+
+[`next-themes`](https://github.com/pacocoursey/next-themes) sets the class for you, follows the system preference, and avoids a flash on load.
+
+```tsx
+'use client';
+
+import { ThemeProvider } from 'next-themes';
+
+export function Providers({ children }: { children: React.ReactNode }) {
+	return (
+		<ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+			{children}
+		</ThemeProvider>
+	);
+}
+```
+
+Add `suppressHydrationWarning` to your `<html>` element, because the class is set before React hydrates.
+
+## A toggle
+
+```tsx
+'use client';
+
+import { useTheme } from 'next-themes';
+import { Button } from '@woldui/react/components/ui/button';
+
+export function ThemeToggle() {
+	const { resolvedTheme, setTheme } = useTheme();
+	return (
+		<Button
+			variant="light"
+			tone="default"
+			aria-label="Toggle light and dark theme"
+			onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}
+		>
+			Toggle theme
+		</Button>
+	);
+}
+```
+
+<Callout>
+	Keep anything that depends on the theme out of the server-rendered HTML, or show both states and
+	let CSS pick (`hidden dark:block`). The server doesn't know the reader's theme, and a mismatch
+	makes React warn during hydration.
+</Callout>
+
+## Without a library
+
+Toggle the class yourself:
+
+```ts
+document.documentElement.classList.toggle('dark');
+```

@@ -1,0 +1,120 @@
+import Usage from '@/content/examples/select/usage';
+import Groups from '@/content/examples/select/groups';
+import Sizes from '@/content/examples/select/sizes';
+import States from '@/content/examples/select/states';
+import Controlled from '@/content/examples/select/controlled';
+import Popper from '@/content/examples/select/popper';
+
+export const metadata = { title: 'Select' };
+
+<DocHeader
+	title="Select"
+	description="Picks one value from a list that opens over the page. Styled throughout, unlike the native control."
+	source="components/ui/select"
+	imports={[
+		'Select',
+		'SelectTrigger',
+		'SelectValue',
+		'SelectContent',
+		'SelectGroup',
+		'SelectLabel',
+		'SelectItem',
+		'SelectSeparator'
+	]}
+	primitive={{
+		name: 'Radix Select',
+		href: 'https://www.radix-ui.com/primitives/docs/components/select'
+	}}
+/>
+
+## Usage
+
+<Example name="select/usage">
+	<Usage />
+</Example>
+
+`SelectValue` shows the chosen item's text in the trigger, or its `placeholder` when nothing is chosen. The list is portalled to the end of `<body>`, so it is never clipped by an `overflow: hidden` parent.
+
+## Groups
+
+`SelectGroup` with a `SelectLabel` gives a run of items a heading. `SelectSeparator` draws a line between groups.
+
+<Example name="select/groups">
+	<Groups />
+</Example>
+
+## Sizes
+
+`size` on `SelectTrigger` is `default` or `sm`. The trigger is `w-fit` unless you give it a width.
+
+<Example name="select/sizes">
+	<Sizes />
+</Example>
+
+## States
+
+`disabled` on `Select` disables the whole control, and `disabled` on a `SelectItem` skips just that option. `aria-invalid` on the trigger draws the danger border.
+
+<Example name="select/states">
+	<States />
+</Example>
+
+## Controlled
+
+Pass `value` and `onValueChange` to own the value in state.
+
+<Example name="select/controlled">
+	<Controlled />
+</Example>
+
+## Positioning
+
+By default (`position="item-aligned"`) the list opens so the chosen item sits over the trigger, as a macOS menu does. `position="popper"` opens it below the trigger instead, like a dropdown, and scrolls when it runs out of room.
+
+<Example name="select/popper">
+	<Popper />
+</Example>
+
+<Callout>
+	Need the operating system's own picker, or a value that submits without JavaScript? Use [Native
+	Select](/docs/components/native-select/). Need to type to filter a long list? Use a Combobox.
+</Callout>
+
+## Accessibility
+
+- The trigger is a `<button role="combobox">` with `aria-expanded`. Enter, Space and the arrow keys open it.
+- In the open list, the arrow keys move between items, Home and End jump to the ends, typing a letter jumps to the next matching item, Enter selects, and Escape closes and returns focus to the trigger.
+- Label it by giving `SelectTrigger` an `id` that a `Label`'s `htmlFor` points to, or an `aria-label` when there is no visible label.
+- Mark an invalid select with `aria-invalid` on the trigger and point `aria-describedby` at the message.
+- Inside a `<form>`, a hidden native `<select>` carries `name` and the chosen value, so it submits and autofills like a native one.
+
+## API
+
+<PropsTable
+	of="components/ui/select#Select"
+	inherits={{
+		name: 'Radix Select Root',
+		href: 'https://www.radix-ui.com/primitives/docs/components/select#root'
+	}}
+/>
+<PropsTable
+	of="components/ui/select#SelectTrigger"
+	inherits={{
+		name: 'Radix Select Trigger',
+		href: 'https://www.radix-ui.com/primitives/docs/components/select#trigger'
+	}}
+/>
+<PropsTable
+	of="components/ui/select#SelectContent"
+	inherits={{
+		name: 'Radix Select Content',
+		href: 'https://www.radix-ui.com/primitives/docs/components/select#content'
+	}}
+/>
+<PropsTable
+	of="components/ui/select#SelectItem"
+	inherits={{
+		name: 'Radix Select Item',
+		href: 'https://www.radix-ui.com/primitives/docs/components/select#item'
+	}}
+/>

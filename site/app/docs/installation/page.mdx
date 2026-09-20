@@ -1,0 +1,82 @@
+export const metadata = { title: 'Installation' };
+
+<DocHeader
+	title="Installation"
+	description="Add WoldUI to a React 19 app that uses Tailwind CSS v4."
+/>
+
+## Requirements
+
+- React 19 and React DOM 19
+- Tailwind CSS 4
+- Any bundler: Next.js, Vite and others all work
+
+## Install
+
+```bash
+pnpm add @woldui/react
+```
+
+npm and yarn work too: `npm install @woldui/react`.
+
+## Import the theme
+
+Import the theme once, at the top of your main stylesheet. It already includes Tailwind, so don't import `tailwindcss` again.
+
+```css
+@import '@woldui/react/globals.css';
+```
+
+<Callout>
+	The theme tells Tailwind to scan WoldUI's own files. Tailwind skips `node_modules` by default, so
+	without that the components would render unstyled.
+</Callout>
+
+## Use a component
+
+Import each component by its path. There's no root export, so each import brings in only what you ask for.
+
+```tsx
+import { Button } from '@woldui/react/components/ui/button';
+
+export default function Page() {
+	return <Button>Get started</Button>;
+}
+```
+
+## Add the providers
+
+Toasts and tooltips need their providers mounted once, near the root. Dark mode needs something that sets a `.dark` class — `next-themes` does it.
+
+```tsx
+'use client';
+
+import { ThemeProvider } from 'next-themes';
+import { Toaster } from '@woldui/react/components/ui/sonner';
+import { TooltipProvider } from '@woldui/react/components/ui/tooltip';
+
+export function Providers({ children }: { children: React.ReactNode }) {
+	return (
+		<ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+			<TooltipProvider>{children}</TooltipProvider>
+			<Toaster />
+		</ThemeProvider>
+	);
+}
+```
+
+## Next.js
+
+WoldUI ships compiled ESM with `'use client'` kept on every client component, so you can import components straight into server components. There's no `transpilePackages` entry to add.
+
+## Vite
+
+Add the Tailwind plugin as usual, then import the theme from your stylesheet as above.
+
+```ts
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import tailwindcss from '@tailwindcss/vite';
+
+export default defineConfig({ plugins: [react(), tailwindcss()] });
+```

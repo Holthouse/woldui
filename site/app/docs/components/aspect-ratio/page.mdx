@@ -1,0 +1,46 @@
+import Usage from '@/content/examples/aspect-ratio/usage';
+import Ratios from '@/content/examples/aspect-ratio/ratios';
+
+export const metadata = { title: 'Aspect Ratio' };
+
+<DocHeader
+	title="Aspect Ratio"
+	description="Holds its content to a fixed width-to-height ratio as the width changes. Use it for images, video and cover art so the layout doesn't jump while they load."
+	source="components/ui/aspect-ratio"
+	imports={['AspectRatio']}
+	primitive={{
+		name: 'Radix Aspect Ratio',
+		href: 'https://www.radix-ui.com/primitives/docs/components/aspect-ratio'
+	}}
+/>
+
+## Usage
+
+<Example name="aspect-ratio/usage">
+	<Usage />
+</Example>
+
+It takes the width of its parent, so size the wrapper rather than the ratio box. Put an `<img>` or `<video>` inside with `className="size-full object-cover"` to fill it.
+
+## Ratios
+
+`ratio` is a number: width divided by height. Write it as a fraction (`4 / 3`) so the intent reads at a glance.
+
+<Example name="aspect-ratio/ratios">
+	<Ratios />
+</Example>
+
+## Accessibility
+
+- It renders plain `<div>`s and adds no semantics of its own.
+- An image inside still needs its own `alt` text, or `alt=""` when it is decorative.
+
+## API
+
+<PropsTable
+	of="components/ui/aspect-ratio#AspectRatio"
+	inherits={{
+		name: 'Radix Aspect Ratio Root',
+		href: 'https://www.radix-ui.com/primitives/docs/components/aspect-ratio#root'
+	}}
+/>

@@ -1,0 +1,50 @@
+import Usage from '@/content/examples/hover-card/usage';
+
+export const metadata = { title: 'Hover Card' };
+
+<DocHeader
+	title="Hover Card"
+	description="A preview card that appears when the pointer rests on a link, for a glance at what is behind it."
+	source="components/ui/hover-card"
+	imports={['HoverCard', 'HoverCardTrigger', 'HoverCardContent']}
+	primitive={{
+		name: 'Radix Hover Card',
+		href: 'https://www.radix-ui.com/primitives/docs/components/hover-card'
+	}}
+/>
+
+## Usage
+
+<Example name="hover-card/usage">
+	<Usage />
+</Example>
+
+`openDelay` and `closeDelay` on `HoverCard` set how long the pointer must rest before it opens and how long it lingers after the pointer leaves.
+
+<Callout tone="warning">
+	A hover card is for sighted pointer users only. Never put anything in it that is not also
+	reachable another way, such as on the page the link leads to.
+</Callout>
+
+## Accessibility
+
+- It also opens when the trigger receives keyboard focus, but its content is not in the tab order and screen readers do not announce it.
+- Touch screens have no hover, so it does not open there at all.
+- The trigger should be a real link or button that does something useful on its own.
+
+## API
+
+<PropsTable
+	of="components/ui/hover-card#HoverCard"
+	inherits={{
+		name: 'Radix Hover Card Root',
+		href: 'https://www.radix-ui.com/primitives/docs/components/hover-card#root'
+	}}
+/>
+<PropsTable
+	of="components/ui/hover-card#HoverCardContent"
+	inherits={{
+		name: 'Radix Hover Card Content',
+		href: 'https://www.radix-ui.com/primitives/docs/components/hover-card#content'
+	}}
+/>

@@ -1,0 +1,64 @@
+import Usage from '@/content/examples/item/usage';
+import Variants from '@/content/examples/item/variants';
+import AsLink from '@/content/examples/item/as-link';
+
+export const metadata = { title: 'Item' };
+
+<DocHeader
+	title="Item"
+	description="A flexible row: media, a title and description, and actions. The building block for lists of projects, people, files or settings."
+	source="components/ui/item"
+	imports={[
+		'ItemGroup',
+		'Item',
+		'ItemMedia',
+		'ItemContent',
+		'ItemTitle',
+		'ItemDescription',
+		'ItemActions',
+		'ItemHeader',
+		'ItemFooter',
+		'ItemSeparator'
+	]}
+/>
+
+## Usage
+
+<Example name="item/usage">
+	<Usage />
+</Example>
+
+`ItemContent` takes the free space, so `ItemActions` lines up at the end of every row. `ItemMedia variant="icon"` sizes an icon to 16px, and `variant="image"` crops an image to a small square. `ItemHeader` and `ItemFooter` span the full width above or below the row.
+
+## Variants and sizes
+
+`variant` sets the surface: none, a border, or a muted fill. `size` tightens the padding for denser lists.
+
+<Example name="item/variants">
+	<Variants />
+</Example>
+
+## As a link
+
+`asChild` renders the item onto its child. A linked item gets a hover fill and a focus ring, and the whole row is the click target.
+
+<Example name="item/as-link">
+	<AsLink />
+</Example>
+
+## Accessibility
+
+- `ItemGroup` has `role="list"`, but `Item` has no role of its own. Give each item inside a group `role="listitem"`, so the list is valid and its count is announced.
+- `ItemSeparator` is decorative and hidden from assistive tech.
+- A linked item's accessible name is all of its text, title and description together. Keep the description short.
+- Don't put buttons inside a linked item: interactive elements can't nest. Use a plain item with a link in the title and buttons in `ItemActions` instead.
+
+## API
+
+<PropsTable of="components/ui/item#Item" inherits={{ name: 'the native <div>' }} />
+<PropsTable of="components/ui/item#ItemMedia" inherits={{ name: 'the native <div>' }} />
+<PropsTable of="components/ui/item#ItemGroup" inherits={{ name: 'the native <div>' }} />
+<PropsTable
+	of="components/ui/item#ItemSeparator"
+	inherits={{ name: 'Separator', href: '/docs/components/separator' }}
+/>

@@ -1,0 +1,61 @@
+import Usage from '@/content/examples/tooltip/usage';
+import WithKbd from '@/content/examples/tooltip/with-kbd';
+
+export const metadata = { title: 'Tooltip' };
+
+<DocHeader
+	title="Tooltip"
+	description="A short label that appears on hover or focus, most often to name an icon-only button."
+	source="components/ui/tooltip"
+	imports={['TooltipProvider', 'Tooltip', 'TooltipTrigger', 'TooltipContent']}
+	primitive={{
+		name: 'Radix Tooltip',
+		href: 'https://www.radix-ui.com/primitives/docs/components/tooltip'
+	}}
+/>
+
+## Usage
+
+<Example name="tooltip/usage">
+	<Usage />
+</Example>
+
+Tooltips need a `TooltipProvider` above them. Put one near the root of your app, once. WoldUI's provider sets `delayDuration` to `0`, so tooltips open straight away.
+
+## With a shortcut
+
+A `Kbd` inside the content is styled to sit on the dark tooltip, which makes it a good place to teach a keyboard shortcut. `side` places the tooltip on another edge of the trigger.
+
+<Example name="tooltip/with-kbd">
+	<WithKbd />
+</Example>
+
+## Accessibility
+
+- It opens when the trigger is hovered or receives keyboard focus, and closes on Escape, blur or pointer leave.
+- The content is linked to the trigger with `aria-describedby`, so it is read as a description, not a name. An icon-only button still needs its own `aria-label`.
+- Keep it to a few words, and never put anything interactive or essential in it: touch screens cannot hover.
+
+## API
+
+<PropsTable
+	of="components/ui/tooltip#TooltipProvider"
+	inherits={{
+		name: 'Radix Tooltip Provider',
+		href: 'https://www.radix-ui.com/primitives/docs/components/tooltip#provider'
+	}}
+/>
+<PropsTable
+	of="components/ui/tooltip#Tooltip"
+	inherits={{
+		name: 'Radix Tooltip Root',
+		href: 'https://www.radix-ui.com/primitives/docs/components/tooltip#root'
+	}}
+/>
+<PropsTable
+	of="components/ui/tooltip#TooltipContent"
+	inherits={{
+		name: 'Radix Tooltip Content',
+		href: 'https://www.radix-ui.com/primitives/docs/components/tooltip#content'
+	}}
+/>

@@ -1,0 +1,54 @@
+import Usage from '@/content/examples/slider/usage';
+import Range from '@/content/examples/slider/range';
+
+export const metadata = { title: 'Slider' };
+
+<DocHeader
+	title="Slider"
+	description="Picks a number, or a range of numbers, by dragging a thumb along a track."
+	source="components/ui/slider"
+	imports={['Slider']}
+	primitive={{
+		name: 'Radix Slider',
+		href: 'https://www.radix-ui.com/primitives/docs/components/slider'
+	}}
+/>
+
+## Usage
+
+<Example name="slider/usage">
+	<Usage />
+</Example>
+
+The value is always an array, one number per thumb. `min` and `max` default to 0 and 100.
+
+## Range
+
+Two values make two thumbs. `minStepsBetweenThumbs` keeps them apart. Show the current value in text next to the slider, since the thumbs carry no label of their own.
+
+<Example name="slider/range">
+	<Range />
+</Example>
+
+## Accessibility
+
+- Each thumb is a focusable `role="slider"` with `aria-valuemin`, `aria-valuemax` and `aria-valuenow`.
+- The arrow keys move a thumb by one `step`, Page Up and Page Down by ten steps, and Home and End to the ends.
+- With two thumbs, Radix names them "Minimum" and "Maximum".
+- For values that need units ("9:00", "40%"), pass `getAriaValueText` or show the value in visible text.
+
+<Callout tone="warning">
+	A single-thumb slider's thumb has no accessible name. `aria-label` and `aria-labelledby` land on
+	the root, not on the thumb, and `Slider` does not expose the thumb. Until it does, keep a visible
+	label and value next to the slider.
+</Callout>
+
+## API
+
+<PropsTable
+	of="components/ui/slider#Slider"
+	inherits={{
+		name: 'Radix Slider Root',
+		href: 'https://www.radix-ui.com/primitives/docs/components/slider#root'
+	}}
+/>

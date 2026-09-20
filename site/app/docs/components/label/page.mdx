@@ -1,0 +1,38 @@
+import Usage from '@/content/examples/label/usage';
+
+export const metadata = { title: 'Label' };
+
+<DocHeader
+	title="Label"
+	description="Names a form control. Clicking it focuses or toggles the control it points to."
+	source="components/ui/label"
+	imports={['Label']}
+	primitive={{
+		name: 'Radix Label',
+		href: 'https://www.radix-ui.com/primitives/docs/components/label'
+	}}
+/>
+
+## Usage
+
+<Example name="label/usage">
+	<Usage />
+</Example>
+
+For a label with a description and an error wired to the control, use the [Field atom](/docs/atoms/field/).
+
+## Accessibility
+
+- It renders a native `<label>`. Set `htmlFor` to the control's `id` so the label becomes the control's accessible name.
+- Clicking the label focuses an input or toggles a checkbox or switch, which gives small controls a larger target.
+- A label placed after a disabled control (as its `peer`) dims to match it.
+
+## API
+
+<PropsTable
+	of="components/ui/label#Label"
+	inherits={{
+		name: 'Radix Label Root',
+		href: 'https://www.radix-ui.com/primitives/docs/components/label#root'
+	}}
+/>

@@ -1,0 +1,82 @@
+import Usage from '@/content/examples/badge/usage';
+import Variants from '@/content/examples/badge/variants';
+import Status from '@/content/examples/badge/status';
+import Counts from '@/content/examples/badge/counts';
+import AsLink from '@/content/examples/badge/as-link';
+import Removable from '@/content/examples/badge/removable';
+
+export const metadata = { title: 'Badge' };
+
+<DocHeader
+	title="Badge"
+	description="A small pill that labels something: a status, a category or a count. It is a label, not a control."
+	source="components/ui/badge"
+	imports={['Badge']}
+	primitive={{
+		name: 'Radix Slot',
+		href: 'https://www.radix-ui.com/primitives/docs/utilities/slot'
+	}}
+/>
+
+## Usage
+
+<Example name="badge/usage">
+	<Usage />
+</Example>
+
+## Variants
+
+`default` is solid primary. `primary`, `secondary`, `success`, `warning` and `destructive` are HeroUI's tinted look: the tone's 100 step as the surface and its 700 step as the text.
+
+<Example name="badge/variants">
+	<Variants />
+</Example>
+
+<Callout>
+	Badge has one axis, `variant`, which mixes shape and colour. It does not take Button's `tone`
+	prop.
+</Callout>
+
+## Status
+
+Pair a tone with an icon and a word, so the status never rests on colour alone. Mark the icon `data-icon="inline-start"` (or `inline-end`) and the badge tightens its padding on that side. Icons are sized to 12px for you.
+
+<Example name="badge/status">
+	<Status />
+</Example>
+
+## Counts
+
+A badge inside a `Button` shows a count beside the label. On an icon-only button, pin it to the corner, hide it from assistive tech and put the count in the button's `aria-label` instead, so it is announced as one thing.
+
+<Example name="badge/counts">
+	<Counts />
+</Example>
+
+## As a link
+
+`asChild` renders the badge's styling onto its child. A linked badge darkens its tint on hover and shows the focus ring.
+
+<Example name="badge/as-link">
+	<AsLink />
+</Example>
+
+## Removable
+
+A badge can hold a small button, as in a list of active filters. The badge stays a label; the button inside does the work and has a name of its own. This one is controlled: the list lives in state.
+
+<Example name="badge/removable">
+	<Removable />
+</Example>
+
+## Accessibility
+
+- It renders a `<span>` with no role, so its text is read inline with whatever surrounds it. Write it so it makes sense there ("Release notes, New").
+- Never convey status by colour alone. Include the word, and mark any icon beside it `aria-hidden`.
+- A badge is not interactive. To make one clickable, use `asChild` with an `<a>`, or put a real `<button>` inside it, as the removable example does, with an `aria-label` that says what it removes.
+- A count that updates live (unread messages) is not announced on its own. Put it in the name of the control it belongs to, or use an `aria-live` region when the change itself matters.
+- The tinted variants set their text in the tone's 700 step rather than the tone itself, which is what keeps small text legible on the tint.
+
+## API
+
+<PropsTable of="components/ui/badge#Badge" inherits={{ name: 'the native <span>' }} />

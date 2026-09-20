@@ -1,0 +1,59 @@
+import Usage from '@/content/examples/carousel/usage';
+import Multiple from '@/content/examples/carousel/multiple';
+import Api from '@/content/examples/carousel/api';
+
+export const metadata = { title: 'Carousel' };
+
+<DocHeader
+	title="Carousel"
+	description="A row of slides that scrolls one step at a time, by dragging, swiping, the arrow keys or the arrow buttons."
+	source="components/ui/carousel"
+	imports={['Carousel', 'CarouselContent', 'CarouselItem', 'CarouselPrevious', 'CarouselNext']}
+	primitive={{ name: 'Embla Carousel', href: 'https://www.embla-carousel.com' }}
+/>
+
+## Usage
+
+<Example name="carousel/usage">
+	<Usage />
+</Example>
+
+`CarouselPrevious` and `CarouselNext` sit outside the carousel's edges and disable themselves at either end. Give the carousel's wrapper horizontal padding so they stay in view.
+
+## Several per view
+
+A `basis-*` class on `CarouselItem` sets how much of the row each slide takes, and it can change at a breakpoint. The arrows are optional: without them the carousel still drags and swipes. `opts` passes options straight to Embla, here `align: 'start'`.
+
+<Example name="carousel/multiple">
+	<Multiple />
+</Example>
+
+## Using the API
+
+`setApi` hands you Embla's API once it is ready. Listen to its `select` event to track the current slide, or call `scrollTo` to drive it from elsewhere.
+
+<Example name="carousel/api">
+	<Api />
+</Example>
+
+## Accessibility
+
+- The root is a `region` with `aria-roledescription="carousel"`, and each item is a `group` with `aria-roledescription="slide"`. Give the carousel an `aria-label`, and each slide one that says where it is ("2 of 4").
+- The arrow buttons carry "Previous slide" and "Next slide" as screen-reader text.
+- Left and Right arrow keys move the carousel while focus is anywhere inside it, including on the arrow buttons. The root itself is not focusable, so a carousel with no arrows and no links or buttons in its slides can't be reached by keyboard at all. Keep the arrows unless the slides are interactive.
+- Nothing plays automatically. If you add Embla's autoplay plugin, add a pause control too.
+- `orientation="vertical"` turns the whole thing on its side, but the keyboard handler still listens only for Left and Right.
+
+## API
+
+<PropsTable of="components/ui/carousel#Carousel" inherits={{ name: 'the native <div>' }} />
+<PropsTable of="components/ui/carousel#CarouselContent" inherits={{ name: 'the native <div>' }} />
+<PropsTable of="components/ui/carousel#CarouselItem" inherits={{ name: 'the native <div>' }} />
+<PropsTable
+	of="components/ui/carousel#CarouselPrevious"
+	inherits={{ name: 'Button', href: '/docs/components/button' }}
+/>
+<PropsTable
+	of="components/ui/carousel#CarouselNext"
+	inherits={{ name: 'Button', href: '/docs/components/button' }}
+/>

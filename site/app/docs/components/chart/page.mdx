@@ -1,0 +1,52 @@
+import Usage from '@/content/examples/chart/usage';
+
+export const metadata = { title: 'Chart' };
+
+<DocHeader
+	title="Chart"
+	description="Recharts charts themed with WoldUI's tokens, with a matching tooltip and legend."
+	source="components/ui/chart"
+	imports={[
+		'ChartContainer',
+		'ChartTooltip',
+		'ChartTooltipContent',
+		'ChartLegend',
+		'ChartLegendContent'
+	]}
+	primitive={{ name: 'Recharts', href: 'https://recharts.org' }}
+/>
+
+## Usage
+
+<Example name="chart/usage">
+	<Usage />
+</Example>
+
+WoldUI does not wrap every chart type. You build the chart from `recharts` components as usual and put it inside `ChartContainer`, which makes it responsive and applies the theme.
+
+The `config` object names each series. Its `label` is what the tooltip and legend show, and its `color` becomes a CSS variable, `--color-<key>`, scoped to this chart. Point the series at that variable (`fill="var(--color-opened)"`) and the colour follows the theme. For different colours in light and dark mode, give a series `theme: { light, dark }` instead of `color`.
+
+`ChartTooltipContent` and `ChartLegendContent` replace Recharts' default tooltip and legend with ones styled like the rest of the library.
+
+<Callout>
+	`ChartContainer` sets `aspect-video` by default. Give it a height class, as above, whenever the
+	chart should not grow with its width.
+</Callout>
+
+## Accessibility
+
+- Keep `accessibilityLayer` on the chart. It makes the chart focusable and lets the arrow keys move the tooltip between data points.
+- A chart is hard to read without sight. Put the key figure in the text around it too, or offer the data as a table.
+- Never tell series apart by colour alone: label them in the legend, and use tones that differ in lightness.
+
+## API
+
+<PropsTable of="components/ui/chart#ChartContainer" inherits={{ name: 'the native <div>' }} />
+<PropsTable
+	of="components/ui/chart#ChartTooltipContent"
+	inherits={{ name: 'Recharts Tooltip', href: 'https://recharts.org/en-US/api/Tooltip' }}
+/>
+<PropsTable
+	of="components/ui/chart#ChartLegendContent"
+	inherits={{ name: 'Recharts Legend', href: 'https://recharts.org/en-US/api/Legend' }}
+/>

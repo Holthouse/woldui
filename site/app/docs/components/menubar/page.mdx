@@ -1,0 +1,96 @@
+import Usage from '@/content/examples/menubar/usage';
+
+export const metadata = { title: 'Menubar' };
+
+<DocHeader
+	title="Menubar"
+	description="A horizontal row of menus, like a desktop application's File, Edit and View."
+	source="components/ui/menubar"
+	imports={[
+		'Menubar',
+		'MenubarMenu',
+		'MenubarTrigger',
+		'MenubarContent',
+		'MenubarItem',
+		'MenubarCheckboxItem',
+		'MenubarRadioGroup',
+		'MenubarRadioItem',
+		'MenubarLabel',
+		'MenubarSeparator',
+		'MenubarShortcut',
+		'MenubarSub',
+		'MenubarSubTrigger',
+		'MenubarSubContent'
+	]}
+	primitive={{
+		name: 'Radix Menubar',
+		href: 'https://www.radix-ui.com/primitives/docs/components/menubar'
+	}}
+/>
+
+## Usage
+
+<Example name="menubar/usage">
+	<Usage />
+</Example>
+
+Each `MenubarMenu` is one trigger and its menu. The items are the same as [Dropdown Menu](/docs/components/dropdown-menu)'s: a `destructive` variant, checkbox and radio items, labels, shortcuts and submenus.
+
+## Accessibility
+
+- The bar is a single tab stop. Left and Right move between its triggers, and Enter, Space or Down opens a menu.
+- While one menu is open, Left and Right open the neighbouring menus, as in a desktop app.
+- Escape closes the open menu and returns focus to its trigger.
+- `MenubarShortcut` only displays a shortcut. Bind the keys yourself if you show them.
+
+## API
+
+<PropsTable
+	of="components/ui/menubar#Menubar"
+	inherits={{
+		name: 'Radix Menubar Root',
+		href: 'https://www.radix-ui.com/primitives/docs/components/menubar#root'
+	}}
+/>
+<PropsTable
+	of="components/ui/menubar#MenubarContent"
+	inherits={{
+		name: 'Radix Menubar Content',
+		href: 'https://www.radix-ui.com/primitives/docs/components/menubar#content'
+	}}
+/>
+<PropsTable
+	of="components/ui/menubar#MenubarItem"
+	inherits={{
+		name: 'Radix Menubar Item',
+		href: 'https://www.radix-ui.com/primitives/docs/components/menubar#item'
+	}}
+/>
+<PropsTable
+	of="components/ui/menubar#MenubarCheckboxItem"
+	inherits={{
+		name: 'Radix Menubar CheckboxItem',
+		href: 'https://www.radix-ui.com/primitives/docs/components/menubar#checkboxitem'
+	}}
+/>
+<PropsTable
+	of="components/ui/menubar#MenubarRadioItem"
+	inherits={{
+		name: 'Radix Menubar RadioItem',
+		href: 'https://www.radix-ui.com/primitives/docs/components/menubar#radioitem'
+	}}
+/>
+<PropsTable
+	of="components/ui/menubar#MenubarLabel"
+	inherits={{
+		name: 'Radix Menubar Label',
+		href: 'https://www.radix-ui.com/primitives/docs/components/menubar#label'
+	}}
+/>
+<PropsTable
+	of="components/ui/menubar#MenubarSubTrigger"
+	inherits={{
+		name: 'Radix Menubar SubTrigger',
+		href: 'https://www.radix-ui.com/primitives/docs/components/menubar#subtrigger'
+	}}
+/>

@@ -1,0 +1,37 @@
+export const metadata = { title: 'Accessibility' };
+
+<DocHeader
+	title="Accessibility"
+	description="WoldUI is built on Radix primitives and checked with axe on every story. Here's what that covers, and the few things left to you."
+/>
+
+## What you get
+
+- **Keyboard support.** Every interactive component works with the keyboard: Tab to reach it, Enter or Space to activate, arrow keys inside menus, lists and tabs, and Escape to close overlays.
+- **Focus management.** Dialogs, sheets and popovers trap focus while open and return it to the trigger when they close.
+- **Visible focus.** One focus treatment everywhere: a 2px ring offset from the element, shown for keyboard focus only.
+- **Correct roles and states.** Radix sets `role`, `aria-expanded`, `aria-selected`, `aria-checked` and friends as components change state.
+- **Contrast.** Text uses each tone's `-text` step, which reaches WCAG AA (4.5:1) where the fill colour alone wouldn't.
+- **Reduced motion.** Under `prefers-reduced-motion`, animations collapse to their end state. See [Motion](/docs/motion/).
+
+## Checked, not assumed
+
+Every component has Storybook stories, and CI runs each one as a test with axe. A contrast or labelling regression fails the build.
+
+## The form error contract
+
+The [`Field`](/docs/atoms/field/) atom wires a label, a control, a description and error messages together, so no form has to remember to.
+
+- `aria-describedby` lists, in order: the field error, the form-level message, the description, then the adornment (such as a character counter).
+- `aria-invalid` is true when **either** a field error **or** a form-level message is present.
+- The form-level message has `role="alert"`, because it's the only place a server-side refusal appears. The field error doesn't: `aria-describedby` already carries it.
+- An adornment is described, not announced, so a counter is read when the control takes focus rather than on every keystroke.
+
+Put a form-level failure in `Field`'s `message` prop rather than in a paragraph beside the form. A detached paragraph is announced once and then can't be reached from the control.
+
+## What's left to you
+
+- **Name icon-only controls.** A button or link with only an icon needs `aria-label`. The icon itself should be `aria-hidden`, and the [`Icon`](/docs/atoms/icon/) atom makes that choice explicit.
+- **Give every dialog a title.** `DialogTitle` is required. Hide it visually if the design doesn't show one, but keep it.
+- **Don't carry meaning in colour alone.** Pair a tone with text or an icon.
+- **Avoid muted text on a muted surface.** `muted-foreground` on `muted` measures 4.13:1, below AA for normal text. On the page background it passes.

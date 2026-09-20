@@ -1,0 +1,53 @@
+import Usage from '@/content/examples/table/usage';
+import Selectable from '@/content/examples/table/selectable';
+
+export const metadata = { title: 'Table' };
+
+<DocHeader
+	title="Table"
+	description="A styled HTML table for rows of structured data, with a caption, header and footer."
+	source="components/ui/table"
+	imports={[
+		'Table',
+		'TableCaption',
+		'TableHeader',
+		'TableBody',
+		'TableFooter',
+		'TableRow',
+		'TableHead',
+		'TableCell'
+	]}
+/>
+
+## Usage
+
+<Example name="table/usage" align="start">
+	<Usage />
+</Example>
+
+Each part is the matching native element (`<table>`, `<thead>`, `<th>` and so on), lightly styled. `Table` wraps the `<table>` in a container that scrolls sideways when the columns don't fit. Right-align numeric columns and set them `tabular-nums` so the digits line up.
+
+## Selectable rows
+
+A row with `data-state="selected"` is highlighted. The selection itself is yours to hold in state; here a checkbox per row and an indeterminate one in the header drive it. Cells can hold any component, such as an avatar or a badge.
+
+<Example name="table/selectable" align="start">
+	<Selectable />
+</Example>
+
+## Accessibility
+
+- It renders a real `<table>`, so screen readers announce row and column counts and read each cell with its column header.
+- `TableCaption` names the table. Include one, or give the table an `aria-label` or `aria-labelledby`.
+- `TableHead` renders `<th>`. Add `scope="col"` or `scope="row"` in tables where a header's direction is ambiguous.
+- Every checkbox needs its own `aria-label` naming the row it selects, since it has no visible label.
+- The selected highlight is visual only; the checked state of the checkbox is what assistive tech reports.
+
+## API
+
+The table parts add no props of their own. Each accepts every prop of the native element it renders.
+
+<PropsTable of="components/ui/table#Table" inherits={{ name: 'the native <table>' }} />
+<PropsTable of="components/ui/table#TableRow" inherits={{ name: 'the native <tr>' }} />
+<PropsTable of="components/ui/table#TableHead" inherits={{ name: 'the native <th>' }} />
+<PropsTable of="components/ui/table#TableCell" inherits={{ name: 'the native <td>' }} />

@@ -1,0 +1,28 @@
+import Usage from '@/content/examples/kbd/usage';
+
+export const metadata = { title: 'Kbd' };
+
+<DocHeader
+	title="Kbd"
+	description="Displays a keyboard key or shortcut inline with text."
+	source="components/ui/kbd"
+	imports={['Kbd', 'KbdGroup']}
+/>
+
+## Usage
+
+<Example name="kbd/usage">
+	<Usage />
+</Example>
+
+`KbdGroup` sets a group of keys that are pressed together, such as a shortcut.
+
+## Accessibility
+
+- It renders a `<kbd>` element, which screen readers announce as keyboard input.
+- Write key names out (`Ctrl`, not `⌃`) where a symbol could be ambiguous.
+
+## API
+
+<PropsTable of="components/ui/kbd#Kbd" inherits={{ name: 'the native <kbd>' }} />
+<PropsTable of="components/ui/kbd#KbdGroup" inherits={{ name: 'the native <kbd>' }} />

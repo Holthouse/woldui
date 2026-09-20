@@ -1,0 +1,98 @@
+import Usage from '@/content/examples/atoms-field/usage';
+import Description from '@/content/examples/atoms-field/description';
+import ErrorExample from '@/content/examples/atoms-field/error';
+import FormMessage from '@/content/examples/atoms-field/form-message';
+import Counter from '@/content/examples/atoms-field/counter';
+import Controls from '@/content/examples/atoms-field/controls';
+
+export const metadata = { title: 'Field' };
+
+<DocHeader
+	title="Field"
+	description="Binds a label, a control, its description, a counter and its error messages into one accessible unit, and wires the ARIA between them so no form has to remember to."
+	source="components/atoms/field"
+	imports={['Field']}
+/>
+
+## Usage
+
+<Example name="atoms-field/usage">
+	<Usage />
+</Example>
+
+The control is a render prop, because only you know what it is. Field hands it an `id`, `aria-invalid` and `aria-describedby`; spread them onto the control and the label, messages and control are linked. The ids come from Field, so they can't drift.
+
+<Callout tone="warning">
+	`children` is a function, and a function can't cross from a server component to a client one.
+	Render Field from a file with `'use client'` at the top.
+</Callout>
+
+## With a description
+
+`description` is helper text under the control. It is read when the control takes focus.
+
+<Example name="atoms-field/description">
+	<Description />
+</Example>
+
+## Field errors
+
+`error` is the validation message for this field. It turns the control invalid (Input shows a danger border and tint) and is described with the control, ahead of the description, so it is the first thing read.
+
+<Example name="atoms-field/error">
+	<ErrorExample />
+</Example>
+
+## Form-level message
+
+`message` is for a refusal that belongs to no single field, such as a limit the server enforces. Submit the form with a name to see one. It still marks the control invalid, and it carries `role="alert"`, so it is announced the moment it appears.
+
+<Example name="atoms-field/form-message">
+	<FormMessage />
+</Example>
+
+Route a server refusal through `message` rather than rendering a paragraph beside the form. A detached paragraph is announced once and can't be reached from the control again.
+
+## Counter adornment
+
+`adornment` sits at the end of the label row, usually a character counter. Here the counter and the field error are controlled together from one piece of state.
+
+<Example name="atoms-field/counter">
+	<Counter />
+</Example>
+
+The counter is described, not announced. It has no live region, so a screen reader reads it when the control takes focus instead of on every keystroke.
+
+## Any control
+
+Anything that takes an `id` and ARIA attributes works: a native select, a textarea, an input group. A disabled control stays labelled and described.
+
+<Example name="atoms-field/controls">
+	<Controls />
+</Example>
+
+## Accessibility
+
+Field implements the form error contract from the design guidelines, so every form follows it the same way.
+
+- **`aria-describedby` has a fixed order**: the field error, then the form-level message, then the description, then the adornment. Only the parts that are present are listed. A field with all four gets:
+
+```tsx
+<textarea
+	id=":r1:"
+	aria-invalid="true"
+	aria-describedby=":r1:-error :r1:-message :r1:-description :r1:-adornment"
+/>
+```
+
+- **`aria-invalid` is `true` when there is either an `error` or a `message`.** A refusal that belongs to no field still makes the control invalid. With neither, the attribute is left off rather than set to `false`.
+- **Only the form-level `message` has `role="alert"`.** It is the one place a server refusal appears, so a screen reader must hear it. The field `error` has no live role: `aria-describedby` already carries it, and two announcements for one submit is noise.
+- **The adornment is described, not live.** A counter read on every keystroke drowns out the typing.
+- The label is a real `<label>` tied to the control's `id`, so clicking it focuses the control and the control is announced by name.
+- Error text uses the `destructive` colour, but the message itself says what is wrong and how to fix it ("Must be at most 40 characters"), so colour is never the only signal.
+
+## API
+
+<PropsTable of="components/atoms/field#Field" />
+
+The render prop receives `{ id, 'aria-invalid', 'aria-describedby' }`. Spread all three onto the control.

@@ -1,0 +1,44 @@
+import Usage from '@/content/examples/atoms-icon/usage';
+import Labels from '@/content/examples/atoms-icon/labels';
+
+export const metadata = { title: 'Icon' };
+
+<DocHeader
+	title="Icon"
+	description="Wraps a lucide-react icon so its size and stroke come from the design system, and makes you decide at every call site whether it is decorative."
+	source="components/atoms/icon"
+	imports={['Icon']}
+/>
+
+## Usage
+
+<Example name="atoms-icon/usage">
+	<Usage />
+</Example>
+
+Pass the lucide component itself to `icon`, not an element. `size` runs `xs` (12px), `sm` (16px, the default), `md` (20px) and `lg` (24px), and the stroke is always 1.75.
+
+## Decorative or meaningful
+
+`label` is required. An icon beside a visible label is decorative: pass `label={null}` and it is hidden from assistive tech. An icon that carries meaning on its own gets a string, which becomes its accessible name.
+
+<Example name="atoms-icon/labels">
+	<Labels />
+</Example>
+
+<Callout>
+	`label` is required on purpose. There is no third case, and getting it wrong is silent: a
+	meaningful icon with no name, or a decorative one read out twice. Making you type `null` turns
+	that into a decision.
+</Callout>
+
+## Accessibility
+
+- `label={null}` sets `aria-hidden`, so a screen reader skips the icon.
+- A string label sets `role="img"` and `aria-label`, so the icon is announced by that name.
+- The icon is never focusable. An icon-only button still needs an `aria-label` on the button; give the icon inside it `label={null}`.
+- A coloured icon that shows status should use a `-text` token (`text-success-text`), which keeps AA contrast where the raw tone does not.
+
+## API
+
+<PropsTable of="components/atoms/icon#Icon" />

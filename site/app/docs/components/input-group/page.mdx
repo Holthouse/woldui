@@ -1,0 +1,74 @@
+import Usage from '@/content/examples/input-group/usage';
+import TextAndButton from '@/content/examples/input-group/text-and-button';
+import Textarea from '@/content/examples/input-group/textarea';
+
+export const metadata = { title: 'Input Group' };
+
+<DocHeader
+	title="Input Group"
+	description="An input or textarea with icons, text, keys or buttons placed inside the field."
+	source="components/ui/input-group"
+	imports={[
+		'InputGroup',
+		'InputGroupAddon',
+		'InputGroupInput',
+		'InputGroupTextarea',
+		'InputGroupText',
+		'InputGroupButton'
+	]}
+/>
+
+## Usage
+
+<Example name="input-group/usage">
+	<Usage />
+</Example>
+
+The group owns the fill, border and focus style, so use `InputGroupInput` inside it, not a plain `Input`. Clicking an addon focuses the input.
+
+## Text and buttons
+
+`align` places an addon: `inline-start` (the default) or `inline-end`. `InputGroupText` holds a prefix or suffix, and `InputGroupButton` is a compact button sized to sit inside the field.
+
+<Example name="input-group/text-and-button">
+	<TextAndButton />
+</Example>
+
+## With a textarea
+
+`block-start` and `block-end` put an addon above or below the control, and the group grows to fit. This suits a composer with a toolbar.
+
+<Example name="input-group/textarea">
+	<Textarea />
+</Example>
+
+## Accessibility
+
+- The input still needs a label. A search icon is not one: give `InputGroupInput` an `aria-label` or a `Label`.
+- Icons in an addon are decorative; mark them `aria-hidden`. An icon-only `InputGroupButton` needs an `aria-label`.
+- `aria-invalid` on the input turns the whole group's border to the danger colour.
+- `InputGroupButton` defaults to `type="button"`, so it never submits the surrounding form by accident.
+
+## API
+
+<PropsTable
+	of="components/ui/input-group#InputGroupAddon"
+	inherits={{ name: 'the native <div>' }}
+/>
+<PropsTable
+	of="components/ui/input-group#InputGroupButton"
+	inherits={{ name: 'Button', href: '/docs/components/button/' }}
+/>
+<PropsTable of="components/ui/input-group#InputGroup" inherits={{ name: 'the native <div>' }} />
+<PropsTable
+	of="components/ui/input-group#InputGroupInput"
+	inherits={{ name: 'the native <input>' }}
+/>
+<PropsTable
+	of="components/ui/input-group#InputGroupTextarea"
+	inherits={{ name: 'the native <textarea>' }}
+/>
+<PropsTable
+	of="components/ui/input-group#InputGroupText"
+	inherits={{ name: 'the native <span>' }}
+/>

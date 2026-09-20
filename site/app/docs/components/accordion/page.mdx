@@ -1,0 +1,68 @@
+import Usage from '@/content/examples/accordion/usage';
+import Multiple from '@/content/examples/accordion/multiple';
+
+export const metadata = { title: 'Accordion' };
+
+<DocHeader
+	title="Accordion"
+	description="A stack of headings that each reveal a section of content. Reach for it for FAQs and long settings pages where only one part matters at a time."
+	source="components/ui/accordion"
+	imports={['Accordion', 'AccordionItem', 'AccordionTrigger', 'AccordionContent']}
+	primitive={{
+		name: 'Radix Accordion',
+		href: 'https://www.radix-ui.com/primitives/docs/components/accordion'
+	}}
+/>
+
+## Usage
+
+<Example name="accordion/usage">
+	<Usage />
+</Example>
+
+`type="single"` keeps one section open at a time. `collapsible` lets the open one close again; without it, one section always stays open.
+
+## Multiple
+
+`type="multiple"` lets any number of sections stay open. `defaultValue` takes an array of item values, and `disabled` on an item keeps it shut.
+
+<Example name="accordion/multiple">
+	<Multiple />
+</Example>
+
+## Accessibility
+
+- Each trigger is a `<button>` inside a heading, with `aria-expanded` and `aria-controls` pointing at its panel.
+- Enter and Space toggle a section. Arrow Up and Down move between triggers, Home and End jump to the first and last.
+- The height animation on open and close is skipped under `prefers-reduced-motion`.
+
+## API
+
+<PropsTable
+	of="components/ui/accordion#Accordion"
+	inherits={{
+		name: 'Radix Accordion Root',
+		href: 'https://www.radix-ui.com/primitives/docs/components/accordion#root'
+	}}
+/>
+<PropsTable
+	of="components/ui/accordion#AccordionItem"
+	inherits={{
+		name: 'Radix Accordion Item',
+		href: 'https://www.radix-ui.com/primitives/docs/components/accordion#item'
+	}}
+/>
+<PropsTable
+	of="components/ui/accordion#AccordionTrigger"
+	inherits={{
+		name: 'Radix Accordion Trigger',
+		href: 'https://www.radix-ui.com/primitives/docs/components/accordion#trigger'
+	}}
+/>
+<PropsTable
+	of="components/ui/accordion#AccordionContent"
+	inherits={{
+		name: 'Radix Accordion Content',
+		href: 'https://www.radix-ui.com/primitives/docs/components/accordion#content'
+	}}
+/>

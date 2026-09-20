@@ -1,0 +1,45 @@
+import Usage from '@/content/examples/progress/usage';
+import Controlled from '@/content/examples/progress/controlled';
+
+export const metadata = { title: 'Progress' };
+
+<DocHeader
+	title="Progress"
+	description="A thin bar that shows how far a task has got, from 0 to 100."
+	source="components/ui/progress"
+	imports={['Progress']}
+	primitive={{
+		name: 'Radix Progress',
+		href: 'https://www.radix-ui.com/primitives/docs/components/progress'
+	}}
+/>
+
+## Usage
+
+<Example name="progress/usage">
+	<Usage />
+</Example>
+
+## Changing value
+
+Update `value` and the bar eases to the new width.
+
+<Example name="progress/controlled">
+	<Controlled />
+</Example>
+
+## Accessibility
+
+- It renders `role="progressbar"` with `aria-valuemin`, `aria-valuemax` and `aria-valuenow` set from `value` and `max`.
+- Give every bar a name with `aria-label` or `aria-labelledby`, so it is clear what is progressing.
+- Leave `value` out (or pass `null`) for an indeterminate task. The bar stays empty, so pair it with text or a [Spinner](/docs/components/spinner).
+
+## API
+
+<PropsTable
+	of="components/ui/progress#Progress"
+	inherits={{
+		name: 'Radix Progress Root',
+		href: 'https://www.radix-ui.com/primitives/docs/components/progress#root'
+	}}
+/>

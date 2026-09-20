@@ -1,0 +1,31 @@
+export const metadata = { title: 'Introduction' };
+
+<DocHeader
+	title="Introduction"
+	description="WoldUI is a design system for React and Tailwind CSS v4. It reproduces HeroUI's visual language — soft radii, tonal colour scales, layered shadows and springy motion — on top of shadcn/ui and Radix."
+/>
+
+## Why WoldUI
+
+- **Beautiful by default.** Every component starts out looking finished. The theme is HeroUI v2's palette, radii and shadows, written out as CSS variables you own.
+- **Accessible by design.** Radix provides the keyboard and screen-reader behaviour. Every component story runs axe in CI, and the form error contract is built into the `Field` atom.
+- **Motion that behaves.** Presses, ripples, sliding tab indicators and springy overlays — all of which collapse to their end state under reduced motion, and none of which render invisible on the server.
+- **Next.js-ready.** `'use client'` is kept on every client component, so WoldUI works inside server components without a wrapper.
+- **One component per import.** There's no barrel, so a page only ships the components it uses.
+
+## What's inside
+
+- **60+ components**: forms, data display, navigation and feedback, overlays, charts.
+- **Atoms**: `Stack`, `Inline`, `Grid`, `Heading`, `Text`, `Icon` and an accessible `Field`.
+- **A motion layer**: tokens, named variants, and the `Reveal`, `Stagger` and `Fade` primitives.
+- **A theme**: CSS variables for every colour, tone step, radius, shadow and timing.
+
+## Where it comes from
+
+WoldUI started as the design system of a budgeting app, and was extracted so any React project could use it. It builds on the work of [shadcn/ui](https://ui.shadcn.com), [Radix](https://www.radix-ui.com) and [HeroUI](https://heroui.com), whose theme values it reproduces. See the [third-party notices](https://github.com/Holthouse/woldui/blob/main/THIRD_PARTY_NOTICES.md).
+
+## Next steps
+
+- [Install WoldUI](/docs/installation/) in a Next.js or Vite app.
+- Browse the components, starting with [Button](/docs/components/button/).
+- Read how [theming](/docs/theming/) and [motion](/docs/motion/) work.

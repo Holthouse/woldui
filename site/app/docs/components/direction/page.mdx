@@ -1,0 +1,39 @@
+import Usage from '@/content/examples/direction/usage';
+
+export const metadata = { title: 'Direction Provider' };
+
+<DocHeader
+	title="Direction Provider"
+	description="Tells every Radix-based component beneath it whether the text reads left to right or right to left."
+	source="components/ui/direction"
+	imports={['DirectionProvider', 'useDirection']}
+	primitive={{
+		name: 'Radix Direction',
+		href: 'https://www.radix-ui.com/primitives/docs/utilities/direction-provider'
+	}}
+/>
+
+## Usage
+
+<Example name="direction/usage" tall>
+	<Usage />
+</Example>
+
+Open both menus and hover Export: the submenu opens to the right under `ltr` and to the left under `rtl`, and the arrow keys follow the reading direction.
+
+It renders no markup. The HTML `dir` attribute still sets the layout, so put `dir` on your `<html>` element (or a wrapper) as well, as the example does. Wrap your app in one `DirectionProvider` near the root; nest another only for a region that reads the other way. `useDirection()` returns the current direction for your own components.
+
+## Accessibility
+
+- Set `dir` and `lang` on `<html>` too. Screen readers and browsers take the direction from the document, not from React context.
+- Arrow-key navigation in menus, tabs, sliders and toolbars follows the direction, so Right means "next" in LTR and "previous" in RTL.
+
+## API
+
+<PropsTable
+	of="components/ui/direction#DirectionProvider"
+	inherits={{
+		name: 'Radix DirectionProvider',
+		href: 'https://www.radix-ui.com/primitives/docs/utilities/direction-provider'
+	}}
+/>

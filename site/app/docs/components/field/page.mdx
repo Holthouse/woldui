@@ -1,0 +1,72 @@
+import Usage from '@/content/examples/field/usage';
+import CheckboxGroup from '@/content/examples/field/checkbox-group';
+import ChoiceCard from '@/content/examples/field/choice-card';
+
+export const metadata = { title: 'Field Layout' };
+
+<DocHeader
+	title="Field Layout"
+	description="Layout parts for building forms by hand: fieldsets, legends, labels, descriptions and errors, arranged vertically or side by side."
+	source="components/ui/field"
+	imports={[
+		'FieldSet',
+		'FieldLegend',
+		'FieldGroup',
+		'Field',
+		'FieldContent',
+		'FieldLabel',
+		'FieldTitle',
+		'FieldDescription',
+		'FieldError',
+		'FieldSeparator'
+	]}
+/>
+
+<Callout>
+	This is shadcn's layout primitive, not the [Field atom](/docs/atoms/field/). The atom wires `id`,
+	`aria-describedby` and `aria-invalid` for you. These parts only lay things out, so you connect the
+	ids yourself.
+</Callout>
+
+## Usage
+
+<Example name="field/usage" align="start">
+	<Usage />
+</Example>
+
+`Field` stacks a label, control, description and error. `orientation="horizontal"` puts the label and control on one row, which suits switches and checkboxes. `responsive` stacks on narrow containers and goes horizontal once its `FieldGroup` is at least the `md` container width. Set `data-invalid` on a `Field` to turn its text to the danger colour.
+
+## Checkbox group
+
+A `FieldSet` with a `FieldLegend` names a set of controls. `variant="label"` makes the legend the size of a field label.
+
+<Example name="field/checkbox-group" align="start">
+	<CheckboxGroup />
+</Example>
+
+## Choice cards
+
+A `Field` wrapped in a `FieldLabel` becomes a bordered card that highlights when its control is checked. `FieldTitle` gives the card a heading that is not itself a label.
+
+<Example name="field/choice-card">
+	<ChoiceCard />
+</Example>
+
+## Accessibility
+
+- `FieldSet` and `FieldLegend` render a native `<fieldset>` and `<legend>`, so the legend is announced as the group's name.
+- `Field` renders with `role="group"`. The label is associated through `htmlFor`, not through the group.
+- Nothing here sets `aria-describedby` or `aria-invalid`. Give the description and error an `id` and list them on the control.
+- `FieldError` renders with `role="alert"`, so it is announced as soon as it appears. It also accepts `errors`, an array of `{ message }` objects, and de-duplicates them.
+
+## API
+
+<PropsTable of="components/ui/field#Field" inherits={{ name: 'the native <div>' }} />
+<PropsTable of="components/ui/field#FieldLegend" inherits={{ name: 'the native <legend>' }} />
+<PropsTable of="components/ui/field#FieldError" inherits={{ name: 'the native <div>' }} />
+<PropsTable of="components/ui/field#FieldSet" inherits={{ name: 'the native <fieldset>' }} />
+<PropsTable
+	of="components/ui/field#FieldLabel"
+	inherits={{ name: 'Label', href: '/docs/components/label/' }}
+/>
+<PropsTable of="components/ui/field#FieldDescription" inherits={{ name: 'the native <p>' }} />

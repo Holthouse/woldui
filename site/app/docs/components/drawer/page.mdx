@@ -1,0 +1,54 @@
+import Usage from '@/content/examples/drawer/usage';
+import Direction from '@/content/examples/drawer/direction';
+
+export const metadata = { title: 'Drawer' };
+
+<DocHeader
+	title="Drawer"
+	description="A panel that slides up from the bottom of the screen and can be dragged away. The touch-friendly counterpart to Dialog, suited to phones."
+	source="components/ui/drawer"
+	imports={[
+		'Drawer',
+		'DrawerTrigger',
+		'DrawerContent',
+		'DrawerHeader',
+		'DrawerTitle',
+		'DrawerDescription',
+		'DrawerFooter',
+		'DrawerClose'
+	]}
+	primitive={{ name: 'Vaul', href: 'https://vaul.emilkowal.ski' }}
+/>
+
+## Usage
+
+<Example name="drawer/usage">
+	<Usage />
+</Example>
+
+Drag the handle down, or flick it, to dismiss. The content is full width, so centre a narrower column inside it on large screens, as here.
+
+## Direction
+
+`direction` on `Drawer` opens it from another edge. Left and right drawers take three quarters of the width, up to `max-w-sm`, and have no handle. For a side panel that does not need dragging, [Sheet](/docs/components/sheet) is the simpler choice.
+
+<Example name="drawer/direction">
+	<Direction />
+</Example>
+
+## Accessibility
+
+- It is a modal dialog: focus moves in and is trapped, Escape closes it, and focus returns to the trigger.
+- Dragging is never the only way out. Keep a close or cancel button, as both examples do, for keyboard and switch users.
+- `DrawerTitle` names the drawer and `DrawerDescription` describes it. Keep the title, hiding it with `sr-only` if the design has none.
+
+## API
+
+<PropsTable
+	of="components/ui/drawer#Drawer"
+	inherits={{ name: 'Vaul Drawer Root', href: 'https://vaul.emilkowal.ski/api' }}
+/>
+<PropsTable
+	of="components/ui/drawer#DrawerContent"
+	inherits={{ name: 'Vaul Drawer Content', href: 'https://vaul.emilkowal.ski/api' }}
+/>

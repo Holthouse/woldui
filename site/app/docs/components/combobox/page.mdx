@@ -1,0 +1,80 @@
+import Usage from '@/content/examples/combobox/usage';
+import Multiple from '@/content/examples/combobox/multiple';
+
+export const metadata = { title: 'Combobox' };
+
+<DocHeader
+	title="Combobox"
+	description="A text input with a list of options that filters as you type. Reach for it when a Select has too many options to scroll."
+	source="components/ui/combobox"
+	imports={[
+		'Combobox',
+		'ComboboxInput',
+		'ComboboxContent',
+		'ComboboxEmpty',
+		'ComboboxList',
+		'ComboboxItem'
+	]}
+	primitive={{ name: 'Base UI Combobox', href: 'https://base-ui.com/react/components/combobox' }}
+/>
+
+## Usage
+
+<Example name="combobox/usage" align="start" tall>
+	<Usage />
+</Example>
+
+Pass the options to `Combobox` as `items` and it filters them against the input. `ComboboxEmpty` shows when nothing matches. `ComboboxInput` draws the chevron trigger; `showClear` adds a clear button.
+
+## Multiple
+
+With `multiple`, the choices become chips. `ComboboxChips` replaces the input, and `useComboboxAnchor` hands its element to `ComboboxContent` so the list lines up under the whole field. When `ComboboxList` gets a function as its child, it renders the filtered `items` for you.
+
+<Example name="combobox/multiple" align="start" tall>
+	<Multiple />
+</Example>
+
+## Accessibility
+
+- The input has `role="combobox"` with `aria-expanded` and `aria-controls` pointing at the listbox, and the highlighted option is tracked with `aria-activedescendant`.
+- Arrow Up and Down move through the options, Enter selects, and Escape closes the list.
+- The input needs a name: an `aria-label`, as above, or a visible `<label>`.
+- Each chip has its own remove button, so a choice can be dropped without editing the text.
+
+## API
+
+<PropsTable
+	of="components/ui/combobox#ComboboxRoot"
+	inherits={{
+		name: 'Base UI Combobox Root',
+		href: 'https://base-ui.com/react/components/combobox#root'
+	}}
+/>
+<PropsTable
+	of="components/ui/combobox#ComboboxInput"
+	inherits={{
+		name: 'Base UI Combobox Input',
+		href: 'https://base-ui.com/react/components/combobox#input'
+	}}
+/>
+<PropsTable
+	of="components/ui/combobox#ComboboxContent"
+	inherits={{
+		name: 'Base UI Combobox Popup',
+		href: 'https://base-ui.com/react/components/combobox#popup'
+	}}
+/>
+<PropsTable
+	of="components/ui/combobox#ComboboxItem"
+	inherits={{
+		name: 'Base UI Combobox Item',
+		href: 'https://base-ui.com/react/components/combobox#item'
+	}}
+/>
+<PropsTable
+	of="components/ui/combobox#ComboboxChip"
+	inherits={{
+		name: 'Base UI Combobox Chip',
+		href: 'https://base-ui.com/react/components/combobox#chip'
+	}}
+/>

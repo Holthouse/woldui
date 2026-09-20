@@ -1,0 +1,54 @@
+import Usage from '@/content/examples/button-group/usage';
+import Orientation from '@/content/examples/button-group/orientation';
+import WithInput from '@/content/examples/button-group/with-input';
+
+export const metadata = { title: 'Button Group' };
+
+<DocHeader
+	title="Button Group"
+	description="Joins related buttons into one segmented control, collapsing the borders between them."
+	source="components/ui/button-group"
+	imports={['ButtonGroup', 'ButtonGroupSeparator', 'ButtonGroupText']}
+/>
+
+## Usage
+
+<Example name="button-group/usage">
+	<Usage />
+</Example>
+
+`ButtonGroupSeparator` draws a divider between two segments. `ButtonGroupText` is a static segment, such as a word or an icon, that sits level with the buttons.
+
+## Orientation
+
+`orientation="vertical"` stacks the segments and collapses the top and bottom borders instead.
+
+<Example name="button-group/orientation">
+	<Orientation />
+</Example>
+
+## With an input
+
+An `Input` placed in a group stretches to fill the space the buttons leave.
+
+<Example name="button-group/with-input">
+	<WithInput />
+</Example>
+
+## Accessibility
+
+- The group renders with `role="group"`. Give it an `aria-label` so a screen reader announces what the buttons have in common.
+- Each segment stays its own tab stop; the group adds no arrow-key navigation. For a set of options where one is chosen, use [Toggle Group](/docs/components/toggle-group/) instead.
+- The focused segment is lifted above its neighbours, so its focus ring is not clipped by the next button.
+
+## API
+
+<PropsTable of="components/ui/button-group#ButtonGroup" inherits={{ name: 'the native <div>' }} />
+<PropsTable
+	of="components/ui/button-group#ButtonGroupText"
+	inherits={{ name: 'the native <div>' }}
+/>
+<PropsTable
+	of="components/ui/button-group#ButtonGroupSeparator"
+	inherits={{ name: 'Separator', href: '/docs/components/separator/' }}
+/>

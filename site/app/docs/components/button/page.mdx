@@ -1,0 +1,90 @@
+import Usage from '@/content/examples/button/usage';
+import Variants from '@/content/examples/button/variants';
+import Tones from '@/content/examples/button/tones';
+import Sizes from '@/content/examples/button/sizes';
+import Icons from '@/content/examples/button/icons';
+import States from '@/content/examples/button/states';
+import AsLink from '@/content/examples/button/as-link';
+
+export const metadata = { title: 'Button' };
+
+<DocHeader
+	title="Button"
+	description="Triggers an action. Two axes — a shape and a colour — give every button HeroUI's range, from a solid call to action to a quiet tinted one."
+	source="components/ui/button"
+	imports={['Button']}
+	primitive={{
+		name: 'Radix Slot',
+		href: 'https://www.radix-ui.com/primitives/docs/utilities/slot'
+	}}
+/>
+
+## Usage
+
+<Example name="button/usage">
+	<Usage />
+</Example>
+
+Press it: the button scales down briefly and a ripple spreads from where the pointer landed. Both are CSS — the ripple is a keyframe, not an animation library.
+
+## Variants
+
+`variant` sets the shape. `flat` and `faded` are tinted with the tone's own scale, which is where most of the HeroUI character lives.
+
+<Example name="button/variants">
+	<Variants />
+</Example>
+
+## Tones
+
+`tone` sets the colour, independently of the shape, so every variant comes in every tone.
+
+<Example name="button/tones">
+	<Tones />
+</Example>
+
+<Callout>
+	HeroUI calls this prop `color`. WoldUI calls it `tone`, because `<button>` already has a native `color` attribute, and a variant with that name breaks any component that spreads button props onto an element.
+</Callout>
+
+## Sizes
+
+<Example name="button/sizes">
+	<Sizes />
+</Example>
+
+## With icons
+
+Icons sit beside the label with a consistent gap. The `icon` sizes make a square button for an icon alone.
+
+<Example name="button/icons">
+	<Icons />
+</Example>
+
+## States
+
+A busy button keeps its width steady with a spinner and says so with `aria-busy`. `disableRipple` turns the ripple off for one button.
+
+<Example name="button/states">
+	<States />
+</Example>
+
+## As a link
+
+`asChild` renders the button's styling onto its child, so a link can look like a button and still be a link.
+
+<Example name="button/as-link">
+	<AsLink />
+</Example>
+
+## Accessibility
+
+- It renders a native `<button>`, so Enter and Space activate it and it joins the tab order.
+- The focus ring is a 2px outline offset from the button, visible on keyboard focus only.
+- An icon-only button needs an `aria-label` — the icon itself is decorative.
+- Under `prefers-reduced-motion`, neither the press scale nor the ripple runs.
+- `ghost` keeps shadcn's meaning (no border, tonal hover) because many composed components use it. HeroUI's outlined look is `bordered`.
+
+## API
+
+<PropsTable of="components/ui/button#Button" inherits={{ name: 'the native <button>' }} />

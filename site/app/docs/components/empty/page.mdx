@@ -1,0 +1,29 @@
+import Usage from '@/content/examples/empty/usage';
+
+export const metadata = { title: 'Empty' };
+
+<DocHeader
+	title="Empty"
+	description="Fills the space where content will be, with an explanation and the action that creates the first item."
+	source="components/ui/empty"
+	imports={['Empty', 'EmptyHeader', 'EmptyMedia', 'EmptyTitle', 'EmptyDescription', 'EmptyContent']}
+/>
+
+## Usage
+
+<Example name="empty/usage">
+	<Usage />
+</Example>
+
+`EmptyMedia` with `variant="icon"` puts the icon in a small muted tile. Leave `variant` at `default` for an illustration or an avatar. The dashed border only shows when you add a `border` class.
+
+## Accessibility
+
+- It renders plain `<div>` elements, so the title is not a heading. If the empty state stands in for a section, keep that section's own heading on the page.
+- Mark the icon `aria-hidden`: the title already says what is missing.
+- Make the action a real button or link, so it is reachable by keyboard.
+
+## API
+
+<PropsTable of="components/ui/empty#Empty" inherits={{ name: 'the native <div>' }} />
+<PropsTable of="components/ui/empty#EmptyMedia" inherits={{ name: 'the native <div>' }} />

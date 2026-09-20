@@ -1,0 +1,53 @@
+import Usage from '@/content/examples/popover/usage';
+
+export const metadata = { title: 'Popover' };
+
+<DocHeader
+	title="Popover"
+	description="A small panel anchored to a button, for quick settings or detail that should not take over the page."
+	source="components/ui/popover"
+	imports={[
+		'Popover',
+		'PopoverTrigger',
+		'PopoverContent',
+		'PopoverHeader',
+		'PopoverTitle',
+		'PopoverDescription',
+		'PopoverAnchor'
+	]}
+	primitive={{
+		name: 'Radix Popover',
+		href: 'https://www.radix-ui.com/primitives/docs/components/popover'
+	}}
+/>
+
+## Usage
+
+<Example name="popover/usage">
+	<Usage />
+</Example>
+
+`PopoverContent` takes Radix's positioning props, such as `side`, `align` and `sideOffset`, and flips to stay on screen. `PopoverAnchor` positions it against a different element from the trigger.
+
+## Accessibility
+
+- It opens on click, Enter or Space. Focus moves into the content, and Escape or a click outside closes it and returns focus to the trigger.
+- It is not modal: focus is not trapped, and Tab can move past the popover back into the page.
+- `PopoverTitle` is a styled `<div>`, not a heading, and is not wired to the popover as its name. Give `PopoverContent` an `aria-label` when the content needs one.
+
+## API
+
+<PropsTable
+	of="components/ui/popover#Popover"
+	inherits={{
+		name: 'Radix Popover Root',
+		href: 'https://www.radix-ui.com/primitives/docs/components/popover#root'
+	}}
+/>
+<PropsTable
+	of="components/ui/popover#PopoverContent"
+	inherits={{
+		name: 'Radix Popover Content',
+		href: 'https://www.radix-ui.com/primitives/docs/components/popover#content'
+	}}
+/>
