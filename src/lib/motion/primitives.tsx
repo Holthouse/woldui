@@ -25,6 +25,7 @@
 import * as React from 'react';
 import { AnimatePresence, motion, useReducedMotion, type Variants } from 'motion/react';
 import { fadeIn, slideUp, stagger } from './variants.ts';
+import { staggerStep, transition } from './tokens.ts';
 import { cn } from '@woldui/react/lib/utils';
 
 /** Never fires: this store's value is constant per environment. */
@@ -53,6 +54,28 @@ function useShouldAnimate(): boolean {
 	return mounted && !reduced;
 }
 
+/**
+ * A Reveal's position in the Stagger around it, or null when it stands alone.
+ *
+ * Stagger used to rely on `staggerChildren`, which only drives children that declare no
+ * `animate` of their own — and a Reveal has to declare one to work by itself. So nothing
+ * staggered: every child animated at the same moment. Each Reveal now delays itself by its
+ * own index, which is one multiplication and does not depend on how Framer Motion decides
+ * to propagate variants.
+ */
+const StaggerIndex = React.createContext<number | null>(null);
+
+/** The child's variants with its turn in the queue folded into the visible transition. */
+function withDelay(variants: Variants, index: number): Variants {
+	const visible = variants.visible;
+	if (typeof visible !== 'object' || visible === null) return variants;
+	const own = 'transition' in visible ? visible.transition : undefined;
+	return {
+		...variants,
+		visible: { ...visible, transition: { ...transition, ...own, delay: index * staggerStep } }
+	};
+}
+
 type RevealProps = {
 	children: React.ReactNode;
 	/** Which named variant to animate with. Defaults to `slideUp`. */
@@ -69,6 +92,7 @@ type RevealProps = {
  */
 export function Reveal({ children, variants = slideUp, className, as = 'div' }: RevealProps) {
 	const animate = useShouldAnimate();
+	const index = React.useContext(StaggerIndex);
 	const Component = motion[as];
 	const Plain = as;
 
@@ -79,7 +103,7 @@ export function Reveal({ children, variants = slideUp, className, as = 'div' }: 
 			initial="hidden"
 			animate="visible"
 			exit="exit"
-			variants={variants}
+			variants={index === null ? variants : withDelay(variants, index)}
 			className={className}
 		>
 			{children}
@@ -107,7 +131,9 @@ export function Stagger({ children, className, as = 'div' }: StaggerProps) {
 
 	return (
 		<Component initial="hidden" animate="visible" variants={stagger} className={className}>
-			{children}
+			{React.Children.map(children, (child, index) => (
+				<StaggerIndex.Provider value={index}>{child}</StaggerIndex.Provider>
+			))}
 		</Component>
 	);
 }

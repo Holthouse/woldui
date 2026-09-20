@@ -33,8 +33,8 @@ export function Hero({ install }: { install: React.ReactNode }) {
 			</Reveal>
 			<Reveal>
 				<p className="max-w-2xl text-lg text-balance text-muted-foreground">
-					A React design system with HeroUI&rsquo;s look — soft radii, tonal colours and springy
-					motion — built on shadcn/ui and Radix, for Tailwind CSS v4 and Next.js.
+					A React design system with HeroUI&rsquo;s original v2 look — soft radii, tonal colours and
+					springy motion — built on shadcn/ui and Radix, for Tailwind CSS v4 and Next.js.
 				</p>
 			</Reveal>
 			<Reveal className="flex flex-wrap items-center justify-center gap-3">
