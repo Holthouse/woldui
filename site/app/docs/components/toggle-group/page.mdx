@@ -1,0 +1,65 @@
+import Usage from '@/content/examples/toggle-group/usage';
+import Multiple from '@/content/examples/toggle-group/multiple';
+import Attached from '@/content/examples/toggle-group/attached';
+
+export const metadata = { title: 'Toggle Group' };
+
+<DocHeader
+	title="Toggle Group"
+	description="A row of toggles where one, or several, can be pressed at a time."
+	source="components/ui/toggle-group"
+	imports={['ToggleGroup', 'ToggleGroupItem']}
+	primitive={{
+		name: 'Radix Toggle Group',
+		href: 'https://www.radix-ui.com/primitives/docs/components/toggle-group'
+	}}
+/>
+
+## Usage
+
+<Example name="toggle-group/usage">
+	<Usage />
+</Example>
+
+`type="single"` allows one pressed item, like a segmented control. `variant` and `size` set on the group apply to every item.
+
+## Multiple
+
+`type="multiple"` lets any number of items be pressed, and the value is an array.
+
+<Example name="toggle-group/multiple">
+	<Multiple />
+</Example>
+
+## Attached
+
+`spacing` sets the gap between items in spacing units (2 by default). `spacing={0}` joins them into one control with shared borders.
+
+<Example name="toggle-group/attached">
+	<Attached />
+</Example>
+
+## Accessibility
+
+- The group is one tab stop. The arrow keys move between items, and Space or Enter presses the focused one.
+- With `type="single"` the group is a `radiogroup` of `radio` items with `aria-checked`. With `type="multiple"` it is a `toolbar` of buttons with `aria-pressed`.
+- Name the group with `aria-label`, and give every icon-only item an `aria-label` of its own.
+- In a single group, pressing the pressed item again clears the value. If one must always be chosen, control `value` and ignore the empty string in `onValueChange`.
+- `orientation="vertical"` stacks the items. It is a layout prop only: both Left/Right and Up/Down move focus whichever way the group is laid out.
+
+## API
+
+<PropsTable
+	of="components/ui/toggle-group#ToggleGroup"
+	inherits={{
+		name: 'Radix Toggle Group Root',
+		href: 'https://www.radix-ui.com/primitives/docs/components/toggle-group#root'
+	}}
+/>
+<PropsTable
+	of="components/ui/toggle-group#ToggleGroupItem"
+	inherits={{
+		name: 'Radix Toggle Group Item',
+		href: 'https://www.radix-ui.com/primitives/docs/components/toggle-group#item'
+	}}
+/>

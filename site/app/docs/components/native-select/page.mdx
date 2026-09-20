@@ -1,0 +1,44 @@
+import Usage from '@/content/examples/native-select/usage';
+import SizesAndStates from '@/content/examples/native-select/sizes-and-states';
+
+export const metadata = { title: 'Native Select' };
+
+<DocHeader
+	title="Native Select"
+	description="A styled native <select>. The option list is the operating system's own, which suits long lists and phones."
+	source="components/ui/native-select"
+	imports={['NativeSelect', 'NativeSelectOption', 'NativeSelectOptGroup']}
+/>
+
+## Usage
+
+<Example name="native-select/usage">
+	<Usage />
+</Example>
+
+Reach for it over [Select](/docs/components/select/) when you need the platform picker on mobile, typeahead through a long list, or a value that submits with a form without JavaScript.
+
+## Sizes and states
+
+`size` is `default` or `sm`. `disabled` and `aria-invalid` work as they do on any native select.
+
+<Example name="native-select/sizes-and-states">
+	<SizesAndStates />
+</Example>
+
+<Callout tone="warning">
+	`className` styles the wrapper around the `<select>`, not the `<select>` itself. Every other prop, including `id` and `aria-*`, goes to the `<select>`.
+</Callout>
+
+## Accessibility
+
+- It is a native `<select>`, so keyboard, typeahead and screen reader support come from the browser.
+- Label it with a `Label` whose `htmlFor` matches the select's `id`, or with `aria-label`.
+- The chevron is decorative and hidden from assistive technology.
+
+## API
+
+<PropsTable
+	of="components/ui/native-select#NativeSelect"
+	inherits={{ name: 'the native <select>' }}
+/>

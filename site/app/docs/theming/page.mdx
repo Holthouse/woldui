@@ -1,0 +1,64 @@
+import ToneScale from '@/content/examples/theming/tone-scale';
+import Override from '@/content/examples/theming/override';
+
+export const metadata = { title: 'Theming' };
+
+<DocHeader
+	title="Theming"
+	description="Every colour, radius, shadow and timing is a CSS variable. Override the variables and every component follows."
+/>
+
+## Tones are scales
+
+Each tone — primary, secondary, success, warning, danger and the neutral default — comes as a ten-step scale from `50` to `900`. The tinted `flat` and `faded` variants are built from those steps, which is where most of the HeroUI character lives.
+
+<Example name="theming/tone-scale" align="start">
+	<ToneScale />
+</Example>
+
+## Overriding the theme
+
+Set variables after importing the theme to change them everywhere, or on a wrapper element to change them for one part of the page.
+
+```css
+@import '@woldui/react/globals.css';
+
+:root {
+	--primary: #7c3aed;
+	--radius: 0.5rem;
+}
+
+.dark {
+	--primary: #a78bfa;
+}
+```
+
+<Example name="theming/override">
+	<Override />
+</Example>
+
+## The main variables
+
+| Variable                                   | What it sets                                           |
+| ------------------------------------------ | ------------------------------------------------------ |
+| `--background`, `--foreground`             | The page surface and text                              |
+| `--content1` … `--content4`                | Elevated surfaces: cards, popovers, nested panels      |
+| `--<tone>`, `--<tone>-50` … `--<tone>-900` | Each tone and its scale                                |
+| `--<tone>-text`                            | The step of a tone that is legible as text (see below) |
+| `--radius`                                 | The base radius. The ladder is 8 / 12 / 14px           |
+| `--elevation-small/medium/large`           | Soft, layered shadows                                  |
+| `--motion-*`                               | Durations, easing and the press scale                  |
+
+The full list is in [`src/styles/globals.css`](https://github.com/Holthouse/woldui/blob/main/src/styles/globals.css).
+
+## Surface and text use different steps
+
+A tone that works as a background isn't automatically legible as text. HeroUI's danger (`#f31260`) measures 4.14:1 on white, under the 4.5:1 WCAG AA needs for normal text. So each tone has a `-text` variable at a darker step, and anything that renders a tone as text uses it.
+
+<Callout tone="warning">
+	If you override a tone, check its `-text` step still reaches 4.5:1 against your background.
+</Callout>
+
+## Radius and shadow
+
+`--radius` defaults to 14px, with smaller steps derived for small controls. Shadows are three layers — a wide soft blur, a closer shadow and a hairline — so edges stay crisp on light backgrounds.

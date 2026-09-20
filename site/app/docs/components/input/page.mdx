@@ -1,0 +1,80 @@
+import Usage from '@/content/examples/input/usage';
+import Types from '@/content/examples/input/types';
+import States from '@/content/examples/input/states';
+import WithField from '@/content/examples/input/with-field';
+import WithButton from '@/content/examples/input/with-button';
+import Controlled from '@/content/examples/input/controlled';
+
+export const metadata = { title: 'Input' };
+
+<DocHeader
+	title="Input"
+	description="A single-line text field. HeroUI's flat look: a tinted fill that lifts to the page background and gains a primary border on focus."
+	source="components/ui/input"
+	imports={['Input']}
+/>
+
+## Usage
+
+<Example name="input/usage">
+	<Usage />
+</Example>
+
+Every input needs a label. A `Label` with a matching `htmlFor` is the minimum; the [Field atom](/docs/atoms/field/) is the full unit.
+
+## Types
+
+`Input` is a styled native `<input>`, so every `type` works as the browser defines it. `file` gets a matching button style.
+
+<Example name="input/types">
+	<Types />
+</Example>
+
+## States
+
+`disabled` dims the field and takes it out of the tab order. `readOnly` keeps it focusable and selectable. `aria-invalid` turns the border and fill to the danger colour, and is the only thing that does: there is no separate `invalid` prop.
+
+<Example name="input/states">
+	<States />
+</Example>
+
+## With the Field atom
+
+The [Field atom](/docs/atoms/field/) (`@woldui/react/components/atoms/field`) is the accessible label, control, description and error as one unit. It hands the control its `id`, `aria-describedby` and `aria-invalid` through a render prop, so the wiring cannot drift. Reach for it in real forms.
+
+<Example name="input/with-field">
+	<WithField />
+</Example>
+
+<Callout>
+	The Field atom takes a render prop, which is a function, so a page that uses it must be a client
+	component (`'use client'`).
+</Callout>
+
+## With a button
+
+For an icon or text inside the field itself, use [Input Group](/docs/components/input-group/). To join an input and a button into one segmented control, use [Button Group](/docs/components/button-group/).
+
+<Example name="input/with-button">
+	<WithButton />
+</Example>
+
+## Controlled
+
+Pass `value` and `onChange` to own the value in state, here to drive a character count that the input describes itself with.
+
+<Example name="input/controlled">
+	<Controlled />
+</Example>
+
+## Accessibility
+
+- It renders a native `<input>`, so autofill, spell-check, the on-screen keyboard for each `type` and form submission all work unchanged.
+- Label every input. Use `Label` with `htmlFor`, the Field atom, or an `aria-label` only where a visible label truly does not fit (a search box beside a search icon, say). A placeholder is not a label.
+- Mark an invalid field with `aria-invalid` and point `aria-describedby` at the message that explains it. The Field atom does both.
+- The focus style is a 2px primary border and a lifted fill, and it shows on mouse focus as well as keyboard focus.
+- Set `autoComplete` on personal details (`email`, `name`, `current-password`) so browsers and password managers can fill them.
+
+## API
+
+<PropsTable of="components/ui/input#Input" inherits={{ name: 'the native <input>' }} />

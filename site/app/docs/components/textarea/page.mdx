@@ -1,0 +1,35 @@
+import Usage from '@/content/examples/textarea/usage';
+import States from '@/content/examples/textarea/states';
+
+export const metadata = { title: 'Textarea' };
+
+<DocHeader
+	title="Textarea"
+	description="A multi-line text field that grows with its content."
+	source="components/ui/textarea"
+	imports={['Textarea']}
+/>
+
+## Usage
+
+<Example name="textarea/usage">
+	<Usage />
+</Example>
+
+It uses `field-sizing: content`, so it grows as the text does, starting from `rows` (or a 64px minimum). Cap it with a `max-h-*` class if it should scroll instead. It cannot be resized by dragging.
+
+## States
+
+<Example name="textarea/states">
+	<States />
+</Example>
+
+## Accessibility
+
+- It renders a native `<textarea>`, so every browser behaviour, from spell-check to form submission, is unchanged.
+- Label it with a `Label` and `htmlFor`, or with the [Field atom](/docs/atoms/field/), which also wires a description, a character counter and an error.
+- Mark an invalid field with `aria-invalid` and point `aria-describedby` at the message.
+
+## API
+
+<PropsTable of="components/ui/textarea#Textarea" inherits={{ name: 'the native <textarea>' }} />

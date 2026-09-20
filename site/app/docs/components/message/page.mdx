@@ -1,0 +1,49 @@
+import Usage from '@/content/examples/message/usage';
+import Footer from '@/content/examples/message/footer';
+
+export const metadata = { title: 'Message' };
+
+<DocHeader
+	title="Message"
+	description="Lays out one message in a conversation: who sent it, their avatar, the content and a footer. Pair it with Bubble for the content itself."
+	source="components/ui/message"
+	imports={[
+		'MessageGroup',
+		'Message',
+		'MessageAvatar',
+		'MessageContent',
+		'MessageHeader',
+		'MessageFooter'
+	]}
+/>
+
+## Usage
+
+<Example name="message/usage">
+	<Usage />
+</Example>
+
+`align="end"` mirrors the row for the current user's messages, and a [Bubble](/docs/components/bubble) inside follows it to the right. `MessageAvatar` sits at the bottom of the row, beside the last line.
+
+## With a footer
+
+`MessageFooter` holds a timestamp or a read receipt under the content. The avatar lifts to stay level with the bubble rather than the footer.
+
+<Example name="message/footer">
+	<Footer />
+</Example>
+
+## Accessibility
+
+- Messages are plain `<div>`s. Give the conversation `role="log"` and an `aria-label`, so new messages are announced politely as they arrive.
+- Say who sent each message in text, with `MessageHeader` or in the footer. Alignment and avatars are visual only.
+- The header and footer text is small (10px). Keep it to short metadata, not content anyone must read.
+
+## API
+
+<PropsTable of="components/ui/message#MessageGroup" inherits={{ name: 'the native <div>' }} />
+<PropsTable of="components/ui/message#Message" inherits={{ name: 'the native <div>' }} />
+<PropsTable of="components/ui/message#MessageAvatar" inherits={{ name: 'the native <div>' }} />
+<PropsTable of="components/ui/message#MessageContent" inherits={{ name: 'the native <div>' }} />
+<PropsTable of="components/ui/message#MessageHeader" inherits={{ name: 'the native <div>' }} />
+<PropsTable of="components/ui/message#MessageFooter" inherits={{ name: 'the native <div>' }} />

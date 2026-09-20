@@ -1,0 +1,55 @@
+import Usage from '@/content/examples/radio-group/usage';
+import Horizontal from '@/content/examples/radio-group/horizontal';
+
+export const metadata = { title: 'Radio Group' };
+
+<DocHeader
+	title="Radio Group"
+	description="A set of options where exactly one can be chosen."
+	source="components/ui/radio-group"
+	imports={['RadioGroup', 'RadioGroupItem']}
+	primitive={{
+		name: 'Radix Radio Group',
+		href: 'https://www.radix-ui.com/primitives/docs/components/radio-group'
+	}}
+/>
+
+## Usage
+
+<Example name="radio-group/usage">
+	<Usage />
+</Example>
+
+For options with a title and a description, see the choice cards in [Field Layout](/docs/components/field/).
+
+## Horizontal
+
+`orientation="horizontal"` makes Left and Right the navigation keys; lay the items out in a row with `className`. A disabled item is skipped.
+
+<Example name="radio-group/horizontal">
+	<Horizontal />
+</Example>
+
+## Accessibility
+
+- The group is one tab stop. Tab moves to the checked item, and the arrow keys move and select within the group.
+- It renders `role="radiogroup"`. Name it with `aria-label`, or wrap it in a `FieldSet` with a `FieldLegend`.
+- Each item needs a `Label` with a matching `htmlFor`; clicking the label selects the item.
+- Inside a `<form>`, a hidden native radio carries the group's `name` and the chosen value.
+
+## API
+
+<PropsTable
+	of="components/ui/radio-group#RadioGroup"
+	inherits={{
+		name: 'Radix Radio Group Root',
+		href: 'https://www.radix-ui.com/primitives/docs/components/radio-group#root'
+	}}
+/>
+<PropsTable
+	of="components/ui/radio-group#RadioGroupItem"
+	inherits={{
+		name: 'Radix Radio Group Item',
+		href: 'https://www.radix-ui.com/primitives/docs/components/radio-group#item'
+	}}
+/>

@@ -1,0 +1,49 @@
+import Usage from '@/content/examples/atoms-typography/usage';
+import Headings from '@/content/examples/atoms-typography/headings';
+import TextExample from '@/content/examples/atoms-typography/text';
+
+export const metadata = { title: 'Typography' };
+
+<DocHeader
+	title="Typography"
+	description="Heading, Text, Muted and Code: the type scale fixed in one place, so headings and body text can't drift from page to page."
+	source="components/atoms/typography"
+	imports={['Heading', 'Text', 'Muted', 'Code']}
+/>
+
+## Usage
+
+<Example name="atoms-typography/usage">
+	<Usage />
+</Example>
+
+`Muted` is shorthand for `<Text tone="muted">`. `Code` sets an identifier inline in a mono font with tabular figures, so ids line up in a column.
+
+## Heading level and size
+
+`level` is required and picks the tag, `<h1>` to `<h6>`. `size` is optional and only changes how it looks. They are separate because the right place in the outline and the right visual weight are often different, and choosing a tag for its size is how heading order gets broken.
+
+<Example name="atoms-typography/headings">
+	<Headings />
+</Example>
+
+## Text sizes and tones
+
+`Text` defaults to `size="sm"` and a `<p>`. `as` renders a `<span>` or `<div>` instead, and `tone` sets `muted` or `destructive`.
+
+<Example name="atoms-typography/text">
+	<TextExample />
+</Example>
+
+## Accessibility
+
+- Choose the heading `level` from the page's outline, never from how big it should look; use `size` for that. Don't skip levels.
+- `tone="destructive"` is colour only. An error message still needs to be tied to its control; the [Field](/docs/atoms/field) atom does that.
+- `Muted` text passes AA on the page background, but not on a `muted` fill. Avoid that pairing.
+
+## API
+
+<PropsTable of="components/atoms/typography#Heading" inherits={{ name: 'the native <h1>–<h6>' }} />
+<PropsTable of="components/atoms/typography#Text" inherits={{ name: 'the native <p>' }} />
+<PropsTable of="components/atoms/typography#Muted" inherits={{ name: 'Text, except tone' }} />
+<PropsTable of="components/atoms/typography#Code" inherits={{ name: 'the native <code>' }} />

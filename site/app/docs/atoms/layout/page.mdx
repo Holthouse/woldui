@@ -1,0 +1,60 @@
+import Usage from '@/content/examples/atoms-layout/usage';
+import StackExample from '@/content/examples/atoms-layout/stack';
+import InlineExample from '@/content/examples/atoms-layout/inline';
+import GridExample from '@/content/examples/atoms-layout/grid';
+
+export const metadata = { title: 'Layout' };
+
+<DocHeader
+	title="Layout"
+	description="Four layout primitives, Stack, Inline, Grid and Box, so a layout says what it means (a vertical stack with a large gap) instead of repeating flex classes."
+	source="components/atoms/layout"
+	imports={['Stack', 'Inline', 'Grid', 'Box']}
+/>
+
+## Usage
+
+<Example name="atoms-layout/usage">
+	<Usage />
+</Example>
+
+Gaps come from one named scale: `none`, `xs` (4px), `sm` (8px), `md` (16px), `lg` (24px) and `xl` (32px). There is no arbitrary value, so spacing stays on the grid. Every primitive still takes `className` for anything else.
+
+## Stack
+
+Vertical flow, and the default container for anything that reads top to bottom. `gap` defaults to `md`. `align` sets the cross axis and defaults to `stretch`.
+
+<Example name="atoms-layout/stack">
+	<StackExample />
+</Example>
+
+## Inline
+
+Horizontal flow. It wraps by default, because a row of text-bearing items overflows on a phone; pass `wrap={false}` to stop it. `justify` spreads the items and `align` defaults to `center`.
+
+<Example name="atoms-layout/inline">
+	<InlineExample />
+</Example>
+
+## Grid
+
+A grid that reflows without breakpoints: `min` is the narrowest a column may get (default `16rem`), and the grid fits as many columns as it can. It deliberately takes no column count, because a fixed count is what forces breakpoint juggling later.
+
+<Example name="atoms-layout/grid">
+	<GridExample />
+</Example>
+
+`Box` is a plain `<div>` that takes a `className`, for when you need a styling hook and nothing more.
+
+## Accessibility
+
+- Every primitive renders a `<div>` and adds no semantics. Use `<ul>`, `<nav>` or `<section>` inside, or pass a `role`, when the structure means something.
+- Visual order follows source order: none of them reorder their children, so the tab order and the reading order match what is on screen.
+- `Inline` wraps rather than overflowing, which keeps content reachable at 400% zoom without scrolling sideways.
+
+## API
+
+<PropsTable of="components/atoms/layout#Stack" inherits={{ name: 'the native <div>' }} />
+<PropsTable of="components/atoms/layout#Inline" inherits={{ name: 'the native <div>' }} />
+<PropsTable of="components/atoms/layout#Grid" inherits={{ name: 'the native <div>' }} />
+<PropsTable of="components/atoms/layout#Box" inherits={{ name: 'the native <div>' }} />

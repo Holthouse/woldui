@@ -1,0 +1,51 @@
+import Usage from '@/content/examples/breadcrumb/usage';
+import CustomSeparator from '@/content/examples/breadcrumb/custom-separator';
+
+export const metadata = { title: 'Breadcrumb' };
+
+<DocHeader
+	title="Breadcrumb"
+	description="Shows where the current page sits in a hierarchy, with a link back to each level above it."
+	source="components/ui/breadcrumb"
+	imports={[
+		'Breadcrumb',
+		'BreadcrumbList',
+		'BreadcrumbItem',
+		'BreadcrumbLink',
+		'BreadcrumbPage',
+		'BreadcrumbSeparator',
+		'BreadcrumbEllipsis'
+	]}
+/>
+
+## Usage
+
+<Example name="breadcrumb/usage">
+	<Usage />
+</Example>
+
+`BreadcrumbEllipsis` stands in for levels you have collapsed to save space. `BreadcrumbPage` is the current page and is not a link.
+
+## Custom separator
+
+`BreadcrumbSeparator` draws a chevron by default. Pass any icon as its child to replace it.
+
+<Example name="breadcrumb/custom-separator">
+	<CustomSeparator />
+</Example>
+
+## Accessibility
+
+- `Breadcrumb` is a `<nav>` labelled "breadcrumb", and the trail is an ordered list, so screen readers announce it as a landmark with a count of levels.
+- `BreadcrumbPage` carries `aria-current="page"`.
+- Separators and the ellipsis are `aria-hidden`, so they are not read between every level.
+- With a router, pass `asChild` to `BreadcrumbLink` and put your router's link inside it.
+
+## API
+
+<PropsTable of="components/ui/breadcrumb#Breadcrumb" inherits={{ name: 'the native <nav>' }} />
+<PropsTable of="components/ui/breadcrumb#BreadcrumbLink" inherits={{ name: 'the native <a>' }} />
+<PropsTable
+	of="components/ui/breadcrumb#BreadcrumbSeparator"
+	inherits={{ name: 'the native <li>' }}
+/>

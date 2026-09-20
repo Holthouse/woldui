@@ -1,0 +1,80 @@
+import Usage from '@/content/examples/avatar/usage';
+import Sizes from '@/content/examples/avatar/sizes';
+import Group from '@/content/examples/avatar/group';
+
+export const metadata = { title: 'Avatar' };
+
+<DocHeader
+	title="Avatar"
+	description="A person's picture, with initials in its place until the image loads or when there is none."
+	source="components/ui/avatar"
+	imports={[
+		'Avatar',
+		'AvatarImage',
+		'AvatarFallback',
+		'AvatarBadge',
+		'AvatarGroup',
+		'AvatarGroupCount'
+	]}
+	primitive={{
+		name: 'Radix Avatar',
+		href: 'https://www.radix-ui.com/primitives/docs/components/avatar'
+	}}
+/>
+
+## Usage
+
+<Example name="avatar/usage">
+	<Usage />
+</Example>
+
+`AvatarFallback` renders while the image loads and stays if it fails, so always include one.
+
+## Sizes
+
+`size` is `sm`, `default` or `lg`. `AvatarBadge` pins a status dot to the corner and scales with the avatar; it is `bg-primary` unless you pass a colour.
+
+<Example name="avatar/sizes">
+	<Sizes />
+</Example>
+
+## Group
+
+`AvatarGroup` overlaps its avatars and rings each one in the background colour. `AvatarGroupCount` closes the row with the number left over, and matches the avatars' size.
+
+<Example name="avatar/group">
+	<Group />
+</Example>
+
+## Accessibility
+
+- `AvatarImage` needs `alt` text: the person's name, or `alt=""` when the name is already printed beside it.
+- Initials alone are a poor name for a screen reader. Put the full name next to the avatar, or give the group `role="group"` and an `aria-label`.
+- `AvatarBadge` is only a coloured dot. Put the status inside it as `sr-only` text, or print it beside the avatar.
+
+## API
+
+<PropsTable
+	of="components/ui/avatar#Avatar"
+	inherits={{
+		name: 'Radix Avatar Root',
+		href: 'https://www.radix-ui.com/primitives/docs/components/avatar#root'
+	}}
+/>
+<PropsTable
+	of="components/ui/avatar#AvatarImage"
+	inherits={{
+		name: 'Radix Avatar Image',
+		href: 'https://www.radix-ui.com/primitives/docs/components/avatar#image'
+	}}
+/>
+<PropsTable
+	of="components/ui/avatar#AvatarFallback"
+	inherits={{
+		name: 'Radix Avatar Fallback',
+		href: 'https://www.radix-ui.com/primitives/docs/components/avatar#fallback'
+	}}
+/>
+<PropsTable of="components/ui/avatar#AvatarBadge" inherits={{ name: 'the native <span>' }} />
+<PropsTable of="components/ui/avatar#AvatarGroup" inherits={{ name: 'the native <div>' }} />
+<PropsTable of="components/ui/avatar#AvatarGroupCount" inherits={{ name: 'the native <div>' }} />

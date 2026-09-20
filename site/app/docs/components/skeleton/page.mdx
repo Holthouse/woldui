@@ -1,0 +1,27 @@
+import Usage from '@/content/examples/skeleton/usage';
+
+export const metadata = { title: 'Skeleton' };
+
+<DocHeader
+	title="Skeleton"
+	description="A pulsing placeholder in the shape of content that is still loading."
+	source="components/ui/skeleton"
+	imports={['Skeleton']}
+/>
+
+## Usage
+
+<Example name="skeleton/usage">
+	<Usage />
+</Example>
+
+A skeleton has no size of its own. Give it the width, height and radius of the content it stands in for, so nothing shifts when the content arrives.
+
+## Accessibility
+
+- A skeleton is a plain `<div>` with no text, so screen readers skip it. Tell them something is loading: wrap the placeholders in `role="status"` with a visually hidden message, as above, or set `aria-busy` on the region that is loading.
+- The pulse is Tailwind's `animate-pulse`. It is slow and low in contrast, but disable it with `motion-reduce:animate-none` if your app strips all ambient motion.
+
+## API
+
+<PropsTable of="components/ui/skeleton#Skeleton" inherits={{ name: 'the native <div>' }} />

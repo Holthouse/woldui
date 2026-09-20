@@ -1,0 +1,41 @@
+import Usage from '@/content/examples/message-scroller/usage';
+
+export const metadata = { title: 'Message Scroller' };
+
+<DocHeader
+	title="Message Scroller"
+	description="A scrolling area for a chat or activity feed that starts at the newest message and stays pinned there as more arrive."
+	source="components/ui/message-scroller"
+	imports={[
+		'MessageScrollerProvider',
+		'MessageScroller',
+		'MessageScrollerViewport',
+		'MessageScrollerContent',
+		'MessageScrollerItem',
+		'MessageScrollerButton'
+	]}
+	primitive={{ name: '@shadcn/react', href: 'https://www.npmjs.com/package/@shadcn/react' }}
+/>
+
+## Usage
+
+<Example name="message-scroller/usage">
+	<Usage />
+</Example>
+
+Give `MessageScroller` a height. Each message goes in a `MessageScrollerItem` with a unique `messageId`. When a new item arrives and the reader is at the bottom, the viewport follows it; if they have scrolled up to read, it stays put. Scroll up and `MessageScrollerButton` appears to jump back to the end.
+
+The messages here are [Bubble](/docs/components/bubble)s, but an item can hold anything.
+
+## Accessibility
+
+- Name the viewport with `aria-label` (for example "Conversation") so the scroll region is announced.
+- The viewport is keyboard scrollable, and `MessageScrollerButton` has a visually hidden name ("Scroll to end").
+- It does not announce new messages. If they should be read out, add a polite live region for them yourself.
+
+## API
+
+<PropsTable
+	of="components/ui/message-scroller#MessageScrollerButton"
+	inherits={{ name: 'Button', href: '/docs/components/button' }}
+/>

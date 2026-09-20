@@ -1,0 +1,105 @@
+import Usage from '@/content/examples/dropdown-menu/usage';
+import CheckboxRadio from '@/content/examples/dropdown-menu/checkbox-radio';
+
+export const metadata = { title: 'Dropdown Menu' };
+
+<DocHeader
+	title="Dropdown Menu"
+	description="A menu of actions or options that opens from a button."
+	source="components/ui/dropdown-menu"
+	imports={[
+		'DropdownMenu',
+		'DropdownMenuTrigger',
+		'DropdownMenuContent',
+		'DropdownMenuGroup',
+		'DropdownMenuLabel',
+		'DropdownMenuItem',
+		'DropdownMenuCheckboxItem',
+		'DropdownMenuRadioGroup',
+		'DropdownMenuRadioItem',
+		'DropdownMenuSeparator',
+		'DropdownMenuShortcut',
+		'DropdownMenuSub',
+		'DropdownMenuSubTrigger',
+		'DropdownMenuSubContent'
+	]}
+	primitive={{
+		name: 'Radix Dropdown Menu',
+		href: 'https://www.radix-ui.com/primitives/docs/components/dropdown-menu'
+	}}
+/>
+
+## Usage
+
+<Example name="dropdown-menu/usage">
+	<Usage />
+</Example>
+
+The menu is as wide as its trigger by default; set a width with `className` when the items need more room. `variant="destructive"` colours an item red. `DropdownMenuShortcut` only displays a shortcut: it does not bind the key.
+
+## Checkbox and radio items
+
+`DropdownMenuCheckboxItem` toggles a setting on its own. `DropdownMenuRadioItem`s inside a `DropdownMenuRadioGroup` pick one value from several. Control them with `checked` / `onCheckedChange` and `value` / `onValueChange`. Like any item, choosing one closes the menu; call `event.preventDefault()` in `onSelect` to keep it open.
+
+<Example name="dropdown-menu/checkbox-radio">
+	<CheckboxRadio />
+</Example>
+
+## Accessibility
+
+- Enter, Space or Down on the trigger opens the menu and focuses the first item. Arrow keys move, and typing a letter jumps to the item that starts with it.
+- Right opens a submenu and Left closes it. Escape closes the menu and returns focus to the trigger.
+- Checkbox and radio items carry `menuitemcheckbox` and `menuitemradio` roles, so their checked state is announced.
+- An icon-only trigger needs an `aria-label` that says what the menu is for, such as "Project actions".
+
+## API
+
+<PropsTable
+	of="components/ui/dropdown-menu#DropdownMenu"
+	inherits={{
+		name: 'Radix Dropdown Menu Root',
+		href: 'https://www.radix-ui.com/primitives/docs/components/dropdown-menu#root'
+	}}
+/>
+<PropsTable
+	of="components/ui/dropdown-menu#DropdownMenuContent"
+	inherits={{
+		name: 'Radix Dropdown Menu Content',
+		href: 'https://www.radix-ui.com/primitives/docs/components/dropdown-menu#content'
+	}}
+/>
+<PropsTable
+	of="components/ui/dropdown-menu#DropdownMenuItem"
+	inherits={{
+		name: 'Radix Dropdown Menu Item',
+		href: 'https://www.radix-ui.com/primitives/docs/components/dropdown-menu#item'
+	}}
+/>
+<PropsTable
+	of="components/ui/dropdown-menu#DropdownMenuCheckboxItem"
+	inherits={{
+		name: 'Radix Dropdown Menu CheckboxItem',
+		href: 'https://www.radix-ui.com/primitives/docs/components/dropdown-menu#checkboxitem'
+	}}
+/>
+<PropsTable
+	of="components/ui/dropdown-menu#DropdownMenuRadioItem"
+	inherits={{
+		name: 'Radix Dropdown Menu RadioItem',
+		href: 'https://www.radix-ui.com/primitives/docs/components/dropdown-menu#radioitem'
+	}}
+/>
+<PropsTable
+	of="components/ui/dropdown-menu#DropdownMenuLabel"
+	inherits={{
+		name: 'Radix Dropdown Menu Label',
+		href: 'https://www.radix-ui.com/primitives/docs/components/dropdown-menu#label'
+	}}
+/>
+<PropsTable
+	of="components/ui/dropdown-menu#DropdownMenuSubTrigger"
+	inherits={{
+		name: 'Radix Dropdown Menu SubTrigger',
+		href: 'https://www.radix-ui.com/primitives/docs/components/dropdown-menu#subtrigger'
+	}}
+/>

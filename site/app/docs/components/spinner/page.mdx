@@ -1,0 +1,37 @@
+import Usage from '@/content/examples/spinner/usage';
+import InButton from '@/content/examples/spinner/in-button';
+
+export const metadata = { title: 'Spinner' };
+
+<DocHeader
+	title="Spinner"
+	description="A small rotating icon that says something is loading and there is no progress to measure."
+	source="components/ui/spinner"
+	imports={['Spinner']}
+/>
+
+## Usage
+
+<Example name="spinner/usage">
+	<Usage />
+</Example>
+
+It is a Lucide icon, so it takes the text colour. Size it with a `size-*` class.
+
+## In a button
+
+Inside a busy button the spinner is decorative: the button's label and `aria-busy` already say what is happening.
+
+<Example name="spinner/in-button">
+	<InButton />
+</Example>
+
+## Accessibility
+
+- On its own it has `role="status"` and the name "Loading". Pass a more specific `aria-label`, such as "Loading comments", when you can.
+- Where nearby text already says it is loading, add `aria-hidden` so it is not announced twice.
+- It spins with `animate-spin`. Add `motion-reduce:animate-none` if your app stops all continuous motion under reduced motion.
+
+## API
+
+<PropsTable of="components/ui/spinner#Spinner" inherits={{ name: 'the native <svg>' }} />

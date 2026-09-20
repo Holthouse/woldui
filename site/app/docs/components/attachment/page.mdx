@@ -1,0 +1,66 @@
+import Usage from '@/content/examples/attachment/usage';
+import States from '@/content/examples/attachment/states';
+import Vertical from '@/content/examples/attachment/vertical';
+
+export const metadata = { title: 'Attachment' };
+
+<DocHeader
+	title="Attachment"
+	description="A compact tile for a file: its icon or preview, name, details and actions. Use it in composers, messages and upload lists."
+	source="components/ui/attachment"
+	imports={[
+		'AttachmentGroup',
+		'Attachment',
+		'AttachmentTrigger',
+		'AttachmentMedia',
+		'AttachmentContent',
+		'AttachmentTitle',
+		'AttachmentDescription',
+		'AttachmentActions',
+		'AttachmentAction'
+	]}
+/>
+
+## Usage
+
+<Example name="attachment/usage">
+	<Usage />
+</Example>
+
+`AttachmentTrigger` is an invisible button stretched over the whole tile, so a click anywhere opens the file. `AttachmentActions` sit above it and stay clickable on their own. `AttachmentAction` is a `Button` that defaults to `variant="ghost"` and `size="icon-xs"`.
+
+## States
+
+`state` drives the styling: `idle` draws a dashed border, `uploading` and `processing` shimmer the title, `error` turns the tile and its description destructive. It is `done` by default.
+
+<Example name="attachment/states">
+	<States />
+</Example>
+
+## Vertical
+
+`orientation="vertical"` stacks a large preview above the name, for images. `AttachmentMedia variant="image"` crops its child to a square and dims it until the file is `done`. `AttachmentGroup` scrolls sideways with snap points once the tiles overflow.
+
+<Example name="attachment/vertical">
+	<Vertical />
+</Example>
+
+## Accessibility
+
+- `AttachmentTrigger` has no visible text, so give it an `aria-label` that names the file.
+- Name every `AttachmentAction` after the file too (`Remove design-brief.pdf`), so a list of them is not a column of identical "Remove" buttons.
+- `state` is visual only. Say what is happening in `AttachmentDescription` ("Uploading… 42%", "Too large") so it is read, not just shown.
+- The tile shows a focus ring whenever anything inside it has focus.
+
+## API
+
+<PropsTable of="components/ui/attachment#Attachment" inherits={{ name: 'the native <div>' }} />
+<PropsTable of="components/ui/attachment#AttachmentMedia" inherits={{ name: 'the native <div>' }} />
+<PropsTable
+	of="components/ui/attachment#AttachmentTrigger"
+	inherits={{ name: 'the native <button>' }}
+/>
+<PropsTable
+	of="components/ui/attachment#AttachmentAction"
+	inherits={{ name: 'Button', href: '/docs/components/button' }}
+/>

@@ -1,0 +1,43 @@
+import Usage from '@/content/examples/pagination/usage';
+
+export const metadata = { title: 'Pagination' };
+
+<DocHeader
+	title="Pagination"
+	description="Links between the pages of a long list or table, with previous and next controls."
+	source="components/ui/pagination"
+	imports={[
+		'Pagination',
+		'PaginationContent',
+		'PaginationItem',
+		'PaginationLink',
+		'PaginationPrevious',
+		'PaginationNext',
+		'PaginationEllipsis'
+	]}
+/>
+
+## Usage
+
+<Example name="pagination/usage">
+	<Usage />
+</Example>
+
+Each link is a [Button](/docs/components/button) rendered onto an `<a>`. `isActive` gives the current page a bordered button; the rest are ghost buttons. On narrow screens Previous and Next shrink to their chevrons. Pass `text` to change their labels.
+
+## Accessibility
+
+- `Pagination` is a `<nav>` labelled "pagination".
+- `isActive` sets `aria-current="page"` on the current page's link.
+- Previous and Next have their own `aria-label`s ("Go to previous page", "Go to next page"), so they stay named when the visible text is hidden.
+- `PaginationEllipsis` is `aria-hidden`. It is a gap in the list, not a control.
+- With a router, handle navigation in `onClick` or wrap the links, and keep a real `href` so each page has a URL.
+
+## API
+
+<PropsTable of="components/ui/pagination#PaginationLink" inherits={{ name: 'the native <a>' }} />
+<PropsTable
+	of="components/ui/pagination#PaginationPrevious"
+	inherits={{ name: 'the native <a>' }}
+/>
+<PropsTable of="components/ui/pagination#PaginationNext" inherits={{ name: 'the native <a>' }} />

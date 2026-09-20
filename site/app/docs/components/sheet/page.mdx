@@ -1,0 +1,63 @@
+import Usage from '@/content/examples/sheet/usage';
+import Sides from '@/content/examples/sheet/sides';
+
+export const metadata = { title: 'Sheet' };
+
+<DocHeader
+	title="Sheet"
+	description="A dialog that slides in from an edge of the screen, for filters, settings or details beside the main content."
+	source="components/ui/sheet"
+	imports={[
+		'Sheet',
+		'SheetTrigger',
+		'SheetContent',
+		'SheetHeader',
+		'SheetTitle',
+		'SheetDescription',
+		'SheetFooter',
+		'SheetClose'
+	]}
+	primitive={{
+		name: 'Radix Dialog',
+		href: 'https://www.radix-ui.com/primitives/docs/components/dialog'
+	}}
+/>
+
+## Usage
+
+<Example name="sheet/usage">
+	<Usage />
+</Example>
+
+`SheetHeader` and `SheetFooter` carry their own padding, so pad any content you put between them to match. The footer sits at the bottom of the panel. Like [Dialog](/docs/components/dialog), the content has a close button in the corner, which `showCloseButton={false}` removes.
+
+## Sides
+
+`side` sets the edge it slides in from: `right` (the default), `left`, `top` or `bottom`. Left and right sheets take the full height and three quarters of the width, up to `max-w-sm`. Top and bottom sheets take the full width and the height of their content.
+
+<Example name="sheet/sides">
+	<Sides />
+</Example>
+
+## Accessibility
+
+- It is a Radix Dialog underneath: focus moves in and is trapped, Escape or a click on the backdrop closes it, and focus returns to the trigger.
+- `SheetTitle` is required as the sheet's accessible name. Hide it with `className="sr-only"` if the design has no visible title.
+- Under `prefers-reduced-motion` it appears in place without sliding.
+
+## API
+
+<PropsTable
+	of="components/ui/sheet#Sheet"
+	inherits={{
+		name: 'Radix Dialog Root',
+		href: 'https://www.radix-ui.com/primitives/docs/components/dialog#root'
+	}}
+/>
+<PropsTable
+	of="components/ui/sheet#SheetContent"
+	inherits={{
+		name: 'Radix Dialog Content',
+		href: 'https://www.radix-ui.com/primitives/docs/components/dialog#content'
+	}}
+/>

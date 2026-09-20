@@ -1,0 +1,54 @@
+import Usage from '@/content/examples/calendar/usage';
+import Range from '@/content/examples/calendar/range';
+import Dropdown from '@/content/examples/calendar/dropdown';
+
+export const metadata = { title: 'Calendar' };
+
+<DocHeader
+	title="Calendar"
+	description="A month grid for picking a date or a range of dates. Pair it with a Popover for a date picker."
+	source="components/ui/calendar"
+	imports={['Calendar']}
+	primitive={{ name: 'React DayPicker', href: 'https://daypicker.dev' }}
+/>
+
+## Usage
+
+<Example name="calendar/usage" tall>
+	<Usage />
+</Example>
+
+`mode="single"` selects one day. Pass `defaultMonth` so the calendar opens on the month you expect rather than on today.
+
+## Range
+
+`mode="range"` selects a start and an end day. `numberOfMonths` shows several months side by side.
+
+<Example name="calendar/range" tall>
+	<Range />
+</Example>
+
+## Dropdowns and disabled days
+
+`captionLayout="dropdown"` swaps the month title for month and year dropdowns, bounded by `startMonth` and `endMonth`. `disabled` takes any DayPicker matcher; here it rules out weekends.
+
+<Example name="calendar/dropdown" tall>
+	<Dropdown />
+</Example>
+
+## Accessibility
+
+- The month is a grid: arrow keys move by day and week, Page Up and Page Down by month, Home and End to the start and end of the week.
+- Only the focused day is in the tab order, so Tab moves between the navigation buttons and the grid rather than through every day.
+- Selected days carry `aria-selected`, and disabled days cannot be focused or chosen.
+- Pass a `locale` to get translated month and weekday names and the correct first day of the week.
+
+## API
+
+<PropsTable
+	of="components/ui/calendar#Calendar"
+	inherits={{
+		name: 'React DayPicker',
+		href: 'https://daypicker.dev/api/type-aliases/DayPickerProps'
+	}}
+/>

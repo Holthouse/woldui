@@ -1,0 +1,74 @@
+import Usage from '@/content/examples/sidebar/usage';
+
+export const metadata = { title: 'Sidebar' };
+
+<DocHeader
+	title="Sidebar"
+	description="The app's main navigation column: collapsible to icons or off-canvas on desktop, and a sheet on mobile."
+	source="components/ui/sidebar"
+	imports={[
+		'SidebarProvider',
+		'Sidebar',
+		'SidebarHeader',
+		'SidebarContent',
+		'SidebarGroup',
+		'SidebarMenu',
+		'SidebarMenuItem',
+		'SidebarMenuButton',
+		'SidebarInset',
+		'SidebarTrigger'
+	]}
+/>
+
+## Usage
+
+<Example name="sidebar/usage" align="start" tall>
+	<Usage />
+</Example>
+
+`SidebarProvider` holds the open state and wraps both the `Sidebar` and the page beside it, `SidebarInset`. `SidebarTrigger` toggles it. Inside, `SidebarGroup`s hold `SidebarMenu`s of `SidebarMenuButton`s; `SidebarMenuBadge` adds a count and `SidebarMenuSkeleton` a loading row.
+
+`collapsible` sets what closing does: `offcanvas` (the default) slides it away, `icon` shrinks it to its icons, and `none` keeps it open. `variant` gives it a `floating` card or an `inset` look, and `side` puts it on the right.
+
+<Callout tone="warning">
+	In an app the sidebar is `fixed` to the viewport and the provider is at least the viewport's
+	height. This demo overrides both, a bounded `relative` provider and an `absolute` sidebar, so it
+	stays inside its box. Do not copy those two classes into a real layout. The provider also listens
+	for Ctrl+B (Cmd+B on macOS) on the whole window, and writes the open state to a `sidebar_state`
+	cookie.
+</Callout>
+
+## Accessibility
+
+- `SidebarTrigger` is a button with the visually hidden name "Toggle Sidebar". Ctrl+B or Cmd+B toggles it from anywhere.
+- `SidebarRail`, the thin drag edge, is out of the tab order, because the trigger already does the same job.
+- Mark the current page with `isActive` on its `SidebarMenuButton`. It sets `data-active` for styling only, so also set `aria-current="page"` on the link you render with `asChild`.
+- In `icon` mode the labels are clipped, not removed, so each button keeps its accessible name. Pass `tooltip` to show the label on hover as well.
+- On mobile the sidebar opens as a [Sheet](/docs/components/sheet), which traps focus and closes on Escape.
+
+## API
+
+<PropsTable of="components/ui/sidebar#SidebarProvider" inherits={{ name: 'the native <div>' }} />
+<PropsTable of="components/ui/sidebar#Sidebar" inherits={{ name: 'the native <div>' }} />
+<PropsTable
+	of="components/ui/sidebar#SidebarTrigger"
+	inherits={{ name: 'Button', href: '/docs/components/button' }}
+/>
+<PropsTable
+	of="components/ui/sidebar#SidebarMenuButton"
+	inherits={{ name: 'the native <button>' }}
+/>
+<PropsTable of="components/ui/sidebar#SidebarMenuSubButton" inherits={{ name: 'the native <a>' }} />
+<PropsTable
+	of="components/ui/sidebar#SidebarMenuAction"
+	inherits={{ name: 'the native <button>' }}
+/>
+<PropsTable of="components/ui/sidebar#SidebarGroupLabel" inherits={{ name: 'the native <div>' }} />
+<PropsTable
+	of="components/ui/sidebar#SidebarGroupAction"
+	inherits={{ name: 'the native <button>' }}
+/>
+<PropsTable
+	of="components/ui/sidebar#SidebarMenuSkeleton"
+	inherits={{ name: 'the native <div>' }}
+/>

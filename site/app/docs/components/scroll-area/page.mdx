@@ -1,0 +1,54 @@
+import Usage from '@/content/examples/scroll-area/usage';
+import Horizontal from '@/content/examples/scroll-area/horizontal';
+
+export const metadata = { title: 'Scroll Area' };
+
+<DocHeader
+	title="Scroll Area"
+	description="A fixed-size region that scrolls its content with a slim, themed scrollbar in place of the browser's own."
+	source="components/ui/scroll-area"
+	imports={['ScrollArea', 'ScrollBar']}
+	primitive={{
+		name: 'Radix Scroll Area',
+		href: 'https://www.radix-ui.com/primitives/docs/components/scroll-area'
+	}}
+/>
+
+## Usage
+
+<Example name="scroll-area/usage">
+	<Usage />
+</Example>
+
+Give the `ScrollArea` a fixed height (or width) and it scrolls whatever overflows. A vertical scrollbar is built in and appears on hover when the content overflows.
+
+## Horizontal
+
+Add a `<ScrollBar orientation="horizontal" />` for sideways scrolling, and let the content grow wider than the area with `w-max`.
+
+<Example name="scroll-area/horizontal">
+	<Horizontal />
+</Example>
+
+## Accessibility
+
+- Native scrolling still does the work, so the mouse wheel, touch and trackpad behave as usual, and the page's own keyboard scrolling works once focus is inside.
+- The viewport is not in the tab order. If the content has no links or buttons, a keyboard user may not be able to scroll it; keep something focusable inside, as both examples do.
+- The custom scrollbar is for pointers only: it has no role and takes no keyboard focus.
+
+## API
+
+<PropsTable
+	of="components/ui/scroll-area#ScrollArea"
+	inherits={{
+		name: 'Radix Scroll Area Root',
+		href: 'https://www.radix-ui.com/primitives/docs/components/scroll-area#root'
+	}}
+/>
+<PropsTable
+	of="components/ui/scroll-area#ScrollBar"
+	inherits={{
+		name: 'Radix Scroll Area Scrollbar',
+		href: 'https://www.radix-ui.com/primitives/docs/components/scroll-area#scrollbar'
+	}}
+/>

@@ -1,0 +1,94 @@
+import Usage from '@/content/examples/card/usage';
+import Sizes from '@/content/examples/card/sizes';
+import Dividers from '@/content/examples/card/dividers';
+import Media from '@/content/examples/card/media';
+import Form from '@/content/examples/card/form';
+import Controlled from '@/content/examples/card/controlled';
+
+export const metadata = { title: 'Card' };
+
+<DocHeader
+	title="Card"
+	description="A raised surface that groups one subject: a header, its content and the actions that go with it."
+	source="components/ui/card"
+	imports={[
+		'Card',
+		'CardHeader',
+		'CardTitle',
+		'CardDescription',
+		'CardAction',
+		'CardContent',
+		'CardFooter'
+	]}
+/>
+
+## Usage
+
+<Example name="card/usage">
+	<Usage />
+</Example>
+
+`CardAction` sits in the header's top-right corner, beside the title and description, whatever their length. Every part is optional: leave out the header or the footer and the spacing still holds.
+
+## Sizes
+
+`size="sm"` tightens the padding and gaps, for dense grids of cards such as stats. Both come from one `--card-spacing` variable, so every part moves together.
+
+<Example name="card/sizes">
+	<Sizes />
+</Example>
+
+## Dividers
+
+Add `border-b` to `CardHeader` or `border-t` to `CardFooter` and the card adds matching padding on that side, so the rule sits evenly between sections.
+
+<Example name="card/dividers">
+	<Dividers />
+</Example>
+
+## With media
+
+An `<img>` as the card's first child loses the top padding and takes the card's rounded corners, so a cover image sits flush with the edge.
+
+<Example name="card/media">
+	<Media />
+</Example>
+
+## With a form
+
+A card is a common frame for a short form. Wrap the parts in a `<form className="contents">` so the form doesn't break the card's layout, and put the submit button in the footer.
+
+<Example name="card/form">
+	<Form />
+</Example>
+
+## Controlled content
+
+The card holds no state of its own, so whatever is inside it is yours to control. Here a set of switches drives the summary in the footer.
+
+<Example name="card/controlled">
+	<Controlled />
+</Example>
+
+<Callout>
+	Card uses `shadow-medium`, a soft 30px blur that suits one large surface. Several small cards side
+	by side, as in a carousel, blur into a grey wash; use a bordered panel there instead.
+</Callout>
+
+## Accessibility
+
+- Every part renders a plain `<div>`, so a card adds no semantics. `CardTitle` is not a heading: put an `<h2>` to `<h4>` inside it when the card should appear in the page outline, at the level that fits the page.
+- For a list of cards, wrap them in a `<ul>` with each card in an `<li>`, so the count is announced.
+- To make a whole card clickable, keep one real link or button inside (usually on the title) and stretch its hit area with a pseudo-element. Don't wrap the card in an `<a>`: any button inside it becomes invalid.
+- A form inside a card still needs its own labels. The [Field](/docs/atoms/field) atom wires the label, description and errors for you.
+- Avoid `muted-foreground` text on a `muted` fill inside a card: that pairing falls below AA contrast.
+
+## API
+
+<PropsTable of="components/ui/card#Card" inherits={{ name: 'the native <div>' }} />
+<PropsTable of="components/ui/card#CardHeader" inherits={{ name: 'the native <div>' }} />
+<PropsTable of="components/ui/card#CardTitle" inherits={{ name: 'the native <div>' }} />
+<PropsTable of="components/ui/card#CardDescription" inherits={{ name: 'the native <div>' }} />
+<PropsTable of="components/ui/card#CardAction" inherits={{ name: 'the native <div>' }} />
+<PropsTable of="components/ui/card#CardContent" inherits={{ name: 'the native <div>' }} />
+<PropsTable of="components/ui/card#CardFooter" inherits={{ name: 'the native <div>' }} />

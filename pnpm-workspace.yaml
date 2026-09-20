@@ -1,5 +1,9 @@
-# Not a monorepo — this file only carries pnpm settings.
-#
+# The library is the root package; the docs and marketing site is a private workspace
+# package in site/ that is never published (see site/package.json).
+packages:
+  - '.'
+  - 'site'
+
 # pnpm 10 runs no dependency build scripts unless they are allowed here. esbuild (via Vite)
 # and Tailwind's oxide engine need theirs; Playwright's browser download is left blocked
 # and done explicitly (`pnpm exec playwright install chromium`).

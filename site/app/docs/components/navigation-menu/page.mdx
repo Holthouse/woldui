@@ -1,0 +1,69 @@
+import Usage from '@/content/examples/navigation-menu/usage';
+
+export const metadata = { title: 'Navigation Menu' };
+
+<DocHeader
+	title="Navigation Menu"
+	description="A row of site navigation links, where some items open a panel of further links."
+	source="components/ui/navigation-menu"
+	imports={[
+		'NavigationMenu',
+		'NavigationMenuList',
+		'NavigationMenuItem',
+		'NavigationMenuTrigger',
+		'NavigationMenuContent',
+		'NavigationMenuLink'
+	]}
+	primitive={{
+		name: 'Radix Navigation Menu',
+		href: 'https://www.radix-ui.com/primitives/docs/components/navigation-menu'
+	}}
+/>
+
+## Usage
+
+<Example name="navigation-menu/usage" align="start" tall>
+	<Usage />
+</Example>
+
+A `NavigationMenuTrigger` opens its `NavigationMenuContent`. A plain link sits in the same row: give it `navigationMenuTriggerStyle()` so it lines up with the triggers.
+
+By default the panels render into one shared viewport under the list, which resizes and slides as you move between items. Pass `viewport={false}` to have each panel open directly below its own trigger instead.
+
+## Accessibility
+
+- It renders a `<nav>` with a list of items. Give it an `aria-label` if the page has more than one navigation landmark.
+- Tab moves between the top-level items, Enter or Space opens a panel, and Arrow Down moves into it. Escape closes it and returns focus to the trigger.
+- Panels also open on hover, but they never depend on it: every link is reachable with the keyboard alone.
+- Set `active` on the `NavigationMenuLink` for the current page, which adds `aria-current="page"`.
+
+## API
+
+<PropsTable
+	of="components/ui/navigation-menu#NavigationMenu"
+	inherits={{
+		name: 'Radix Navigation Menu Root',
+		href: 'https://www.radix-ui.com/primitives/docs/components/navigation-menu#root'
+	}}
+/>
+<PropsTable
+	of="components/ui/navigation-menu#NavigationMenuTrigger"
+	inherits={{
+		name: 'Radix Navigation Menu Trigger',
+		href: 'https://www.radix-ui.com/primitives/docs/components/navigation-menu#trigger'
+	}}
+/>
+<PropsTable
+	of="components/ui/navigation-menu#NavigationMenuContent"
+	inherits={{
+		name: 'Radix Navigation Menu Content',
+		href: 'https://www.radix-ui.com/primitives/docs/components/navigation-menu#content'
+	}}
+/>
+<PropsTable
+	of="components/ui/navigation-menu#NavigationMenuLink"
+	inherits={{
+		name: 'Radix Navigation Menu Link',
+		href: 'https://www.radix-ui.com/primitives/docs/components/navigation-menu#link'
+	}}
+/>

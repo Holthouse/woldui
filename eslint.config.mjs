@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
 
 	globalIgnores([
 		'dist/**',
+		// The docs site has its own ESLint config (Next's), run by `pnpm --filter woldui-site lint`.
+		'site/**',
 		'storybook-static/**',
 		// shadcn vendor code: analysed by Knip, but not held to our lint rules.
 		'src/components/ui/**',

@@ -12,8 +12,9 @@
 		"isolatedModules": true,
 		"jsx": "react-jsx",
 		"noImplicitOverride": true,
-		"customConditions": ["woldui-source"]
+		"customConditions": ["woldui-source"],
+		"rewriteRelativeImportExtensions": true
 	},
 	"include": ["**/*.ts", "**/*.tsx", "**/*.mts", ".storybook/**/*.ts", ".storybook/**/*.tsx"],
-	"exclude": ["node_modules", "storybook-static", "dist"]
+	"exclude": ["node_modules", "storybook-static", "dist", "site"]
 }

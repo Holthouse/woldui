@@ -1,0 +1,84 @@
+import Usage from '@/content/examples/alert/usage';
+import Tones from '@/content/examples/alert/tones';
+import WithAction from '@/content/examples/alert/with-action';
+import WithoutIcon from '@/content/examples/alert/without-icon';
+import StatusRole from '@/content/examples/alert/status-role';
+import Dismissible from '@/content/examples/alert/dismissible';
+
+export const metadata = { title: 'Alert' };
+
+<DocHeader
+	title="Alert"
+	description="A tinted panel that draws attention to a message about the page or a task: an update, a warning or a failure."
+	source="components/ui/alert"
+	imports={['Alert', 'AlertIcon', 'AlertTitle', 'AlertDescription', 'AlertAction']}
+/>
+
+## Usage
+
+<Example name="alert/usage">
+	<Usage />
+</Example>
+
+The surface takes the tone's lightest step, the text takes its legible step, and the glyph sits in a filled circle of the solid tone. `AlertIcon` reads the tone from the `Alert` around it, so you set it once.
+
+## Tones
+
+`tone` sets the colour. Pair each tone with a glyph that says the same thing, so the meaning never rests on colour alone.
+
+<Example name="alert/tones" align="start">
+	<Tones />
+</Example>
+
+<Callout>
+	The old `variant="destructive"` still works and maps onto `tone="danger"`. Prefer `tone` in new
+	code.
+</Callout>
+
+## With actions
+
+`AlertAction` puts buttons under the text, lined up with the title. Match the buttons' tone to the alert's.
+
+<Example name="alert/with-action">
+	<WithAction />
+</Example>
+
+## Without an icon
+
+Leave `AlertIcon` out and the text takes the full width instead of leaving a gap.
+
+<Example name="alert/without-icon">
+	<WithoutIcon />
+</Example>
+
+## Live region role
+
+Every alert renders with `role="alert"`, which interrupts a screen reader. For news that can wait, such as a saved confirmation, pass `role="status"` to have it announced politely.
+
+<Example name="alert/status-role">
+	<StatusRole />
+</Example>
+
+## Dismissible
+
+The alert has no close button of its own. Place one inside it and control whether it renders.
+
+<Example name="alert/dismissible">
+	<Dismissible />
+</Example>
+
+## Accessibility
+
+- `Alert` has `role="alert"`, an assertive live region: content that appears after the page loads is read out straight away. Keep that for messages that need attention now, and pass `role="status"` for everything else.
+- An alert already on the page when it loads is not announced, so do not rely on it for news the user must hear.
+- `AlertIcon` is `aria-hidden`. The title carries the meaning, and the glyph repeats it for sighted users.
+- The tone is never the only signal: the title's wording and the glyph say the same thing as the colour.
+- A dismiss button is icon-only, so it needs an `aria-label`. Move focus somewhere sensible after it removes the alert.
+
+## API
+
+<PropsTable of="components/ui/alert#Alert" inherits={{ name: 'the native <div>' }} />
+<PropsTable of="components/ui/alert#AlertIcon" inherits={{ name: 'the native <div>' }} />
+<PropsTable of="components/ui/alert#AlertTitle" inherits={{ name: 'the native <div>' }} />
+<PropsTable of="components/ui/alert#AlertDescription" inherits={{ name: 'the native <div>' }} />
+<PropsTable of="components/ui/alert#AlertAction" inherits={{ name: 'the native <div>' }} />

@@ -1,0 +1,80 @@
+import Usage from '@/content/examples/alert-dialog/usage';
+import Small from '@/content/examples/alert-dialog/small';
+
+export const metadata = { title: 'Alert Dialog' };
+
+<DocHeader
+	title="Alert Dialog"
+	description="A modal that interrupts to ask for a decision, such as confirming something that cannot be undone."
+	source="components/ui/alert-dialog"
+	imports={[
+		'AlertDialog',
+		'AlertDialogTrigger',
+		'AlertDialogContent',
+		'AlertDialogHeader',
+		'AlertDialogMedia',
+		'AlertDialogTitle',
+		'AlertDialogDescription',
+		'AlertDialogFooter',
+		'AlertDialogCancel',
+		'AlertDialogAction'
+	]}
+	primitive={{
+		name: 'Radix Alert Dialog',
+		href: 'https://www.radix-ui.com/primitives/docs/components/alert-dialog'
+	}}
+/>
+
+## Usage
+
+<Example name="alert-dialog/usage">
+	<Usage />
+</Example>
+
+`AlertDialogAction` and `AlertDialogCancel` are buttons that also close the dialog. They take the Button's `variant` and `size`, so a destructive action is `variant="destructive"`. For anything that is not a yes-or-no decision, use [Dialog](/docs/components/dialog).
+
+## Small with media
+
+`size="sm"` on `AlertDialogContent` makes a narrower, centred dialog with the two actions side by side. `AlertDialogMedia` adds an icon above the title.
+
+<Example name="alert-dialog/small">
+	<Small />
+</Example>
+
+## Accessibility
+
+- It renders with `role="alertdialog"`, and the title and description are its accessible name and description, so both are read as soon as it opens.
+- Focus moves to Cancel when it opens, so pressing Enter straight away never confirms the destructive action.
+- Clicking outside does not close it. Escape does, and counts as Cancel. Focus returns to the trigger either way.
+- Focus is trapped inside while it is open, and under `prefers-reduced-motion` it appears without the scale or fade.
+
+## API
+
+<PropsTable
+	of="components/ui/alert-dialog#AlertDialog"
+	inherits={{
+		name: 'Radix Alert Dialog Root',
+		href: 'https://www.radix-ui.com/primitives/docs/components/alert-dialog#root'
+	}}
+/>
+<PropsTable
+	of="components/ui/alert-dialog#AlertDialogContent"
+	inherits={{
+		name: 'Radix Alert Dialog Content',
+		href: 'https://www.radix-ui.com/primitives/docs/components/alert-dialog#content'
+	}}
+/>
+<PropsTable
+	of="components/ui/alert-dialog#AlertDialogAction"
+	inherits={{
+		name: 'Radix Alert Dialog Action',
+		href: 'https://www.radix-ui.com/primitives/docs/components/alert-dialog#action'
+	}}
+/>
+<PropsTable
+	of="components/ui/alert-dialog#AlertDialogCancel"
+	inherits={{
+		name: 'Radix Alert Dialog Cancel',
+		href: 'https://www.radix-ui.com/primitives/docs/components/alert-dialog#cancel'
+	}}
+/>

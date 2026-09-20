@@ -1,0 +1,92 @@
+import Usage from '@/content/examples/context-menu/usage';
+
+export const metadata = { title: 'Context Menu' };
+
+<DocHeader
+	title="Context Menu"
+	description="A menu that opens at the pointer on right-click or long-press, for actions on the thing under it."
+	source="components/ui/context-menu"
+	imports={[
+		'ContextMenu',
+		'ContextMenuTrigger',
+		'ContextMenuContent',
+		'ContextMenuItem',
+		'ContextMenuCheckboxItem',
+		'ContextMenuRadioGroup',
+		'ContextMenuRadioItem',
+		'ContextMenuLabel',
+		'ContextMenuSeparator',
+		'ContextMenuShortcut',
+		'ContextMenuSub',
+		'ContextMenuSubTrigger',
+		'ContextMenuSubContent'
+	]}
+	primitive={{
+		name: 'Radix Context Menu',
+		href: 'https://www.radix-ui.com/primitives/docs/components/context-menu'
+	}}
+/>
+
+## Usage
+
+<Example name="context-menu/usage">
+	<Usage />
+</Example>
+
+Its parts match [Dropdown Menu](/docs/components/dropdown-menu): items with a `destructive` variant, checkbox and radio items, labels, separators, shortcuts and submenus. `inset` lines an item up with the text of checkbox and radio items.
+
+<Callout tone="warning">
+	A context menu is hidden until someone thinks to right-click. Make every action in it available
+	another way too, such as a visible menu button.
+</Callout>
+
+## Accessibility
+
+- It opens on right-click and on long-press on touch screens. Shift+F10 and the Menu key send the same event, but only to an element with focus, so a plain `<div>` trigger is out of keyboard reach. That is another reason to offer the actions elsewhere.
+- Arrow keys move through the items, typing a letter jumps to the item that starts with it, Right opens a submenu and Left closes it.
+- Escape closes the menu. Checkbox and radio items announce whether they are checked.
+
+## API
+
+<PropsTable
+	of="components/ui/context-menu#ContextMenu"
+	inherits={{
+		name: 'Radix Context Menu Root',
+		href: 'https://www.radix-ui.com/primitives/docs/components/context-menu#root'
+	}}
+/>
+<PropsTable
+	of="components/ui/context-menu#ContextMenuItem"
+	inherits={{
+		name: 'Radix Context Menu Item',
+		href: 'https://www.radix-ui.com/primitives/docs/components/context-menu#item'
+	}}
+/>
+<PropsTable
+	of="components/ui/context-menu#ContextMenuCheckboxItem"
+	inherits={{
+		name: 'Radix Context Menu CheckboxItem',
+		href: 'https://www.radix-ui.com/primitives/docs/components/context-menu#checkboxitem'
+	}}
+/>
+<PropsTable
+	of="components/ui/context-menu#ContextMenuRadioItem"
+	inherits={{
+		name: 'Radix Context Menu RadioItem',
+		href: 'https://www.radix-ui.com/primitives/docs/components/context-menu#radioitem'
+	}}
+/>
+<PropsTable
+	of="components/ui/context-menu#ContextMenuLabel"
+	inherits={{
+		name: 'Radix Context Menu Label',
+		href: 'https://www.radix-ui.com/primitives/docs/components/context-menu#label'
+	}}
+/>
+<PropsTable
+	of="components/ui/context-menu#ContextMenuSubTrigger"
+	inherits={{
+		name: 'Radix Context Menu SubTrigger',
+		href: 'https://www.radix-ui.com/primitives/docs/components/context-menu#subtrigger'
+	}}
+/>

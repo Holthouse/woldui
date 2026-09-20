@@ -1,0 +1,62 @@
+import Usage from '@/content/examples/collapsible/usage';
+import Controlled from '@/content/examples/collapsible/controlled';
+
+export const metadata = { title: 'Collapsible' };
+
+<DocHeader
+	title="Collapsible"
+	description="Shows and hides one region behind a trigger. Use it for a single expandable section; for a set of them, use Accordion."
+	source="components/ui/collapsible"
+	imports={['Collapsible', 'CollapsibleTrigger', 'CollapsibleContent']}
+	primitive={{
+		name: 'Radix Collapsible',
+		href: 'https://www.radix-ui.com/primitives/docs/components/collapsible'
+	}}
+/>
+
+## Usage
+
+<Example name="collapsible/usage">
+	<Usage />
+</Example>
+
+Collapsible is unstyled: it only toggles. `CollapsibleTrigger asChild` puts the behaviour on your own button, and anything outside `CollapsibleContent` stays visible.
+
+## Controlled
+
+Pass `open` and `onOpenChange` to own the state, for example to change the trigger's label. Use `defaultOpen` to start open without controlling it.
+
+<Example name="collapsible/controlled">
+	<Controlled />
+</Example>
+
+## Accessibility
+
+- The trigger gets `aria-expanded` and `aria-controls`, pointing at the content.
+- Enter and Space toggle it, like any button.
+- An icon-only trigger needs an `aria-label` that says what it reveals.
+- Closed content is removed from the page, so it is skipped by the tab order and by find-in-page.
+
+## API
+
+<PropsTable
+	of="components/ui/collapsible#Collapsible"
+	inherits={{
+		name: 'Radix Collapsible Root',
+		href: 'https://www.radix-ui.com/primitives/docs/components/collapsible#root'
+	}}
+/>
+<PropsTable
+	of="components/ui/collapsible#CollapsibleTrigger"
+	inherits={{
+		name: 'Radix Collapsible Trigger',
+		href: 'https://www.radix-ui.com/primitives/docs/components/collapsible#trigger'
+	}}
+/>
+<PropsTable
+	of="components/ui/collapsible#CollapsibleContent"
+	inherits={{
+		name: 'Radix Collapsible Content',
+		href: 'https://www.radix-ui.com/primitives/docs/components/collapsible#content'
+	}}
+/>

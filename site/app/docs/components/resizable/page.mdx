@@ -1,0 +1,67 @@
+import Usage from '@/content/examples/resizable/usage';
+import Vertical from '@/content/examples/resizable/vertical';
+
+export const metadata = { title: 'Resizable' };
+
+<DocHeader
+	title="Resizable"
+	description="Panels split by handles that the user drags, or moves with the keyboard, to resize them. For editors, inspectors and split views."
+	source="components/ui/resizable"
+	imports={['ResizablePanelGroup', 'ResizablePanel', 'ResizableHandle']}
+	primitive={{
+		name: 'react-resizable-panels',
+		href: 'https://github.com/bvaughn/react-resizable-panels'
+	}}
+/>
+
+## Usage
+
+<Example name="resizable/usage">
+	<Usage />
+</Example>
+
+`withHandle` draws a visible grip on the divider. `minSize` and `maxSize` keep a panel within bounds.
+
+<Callout tone="warning">
+	In react-resizable-panels v4, a number for `defaultSize`, `minSize` or `maxSize` means **pixels**.
+	Pass a string (`"35"` or `"35%"`) for a percentage.
+</Callout>
+
+## Vertical and nested
+
+`orientation="vertical"` stacks the panels. A group nests inside a panel to split it the other way.
+
+<Example name="resizable/vertical">
+	<Vertical />
+</Example>
+
+## Accessibility
+
+- Each handle is a focusable `separator` with `aria-valuenow`, `aria-valuemin` and `aria-valuemax`, so its position is announced.
+- With a handle focused, the arrow keys resize the panels, and Home and End move it to either limit.
+- The handle has no visible label. Give it an `aria-label` that names what it resizes.
+- The focus ring on the handle is a 1px ring; keep a contrasting border around the group so it stays visible.
+
+## API
+
+<PropsTable
+	of="components/ui/resizable#ResizablePanelGroup"
+	inherits={{
+		name: 'react-resizable-panels Group',
+		href: 'https://github.com/bvaughn/react-resizable-panels'
+	}}
+/>
+<PropsTable
+	of="components/ui/resizable#ResizablePanel"
+	inherits={{
+		name: 'react-resizable-panels Panel',
+		href: 'https://github.com/bvaughn/react-resizable-panels'
+	}}
+/>
+<PropsTable
+	of="components/ui/resizable#ResizableHandle"
+	inherits={{
+		name: 'react-resizable-panels Separator',
+		href: 'https://github.com/bvaughn/react-resizable-panels'
+	}}
+/>

@@ -1,0 +1,94 @@
+import Usage from '@/content/examples/sonner/usage';
+import Types from '@/content/examples/sonner/types';
+import Action from '@/content/examples/sonner/action';
+import PromiseToast from '@/content/examples/sonner/promise';
+import Update from '@/content/examples/sonner/update';
+
+export const metadata = { title: 'Toast (Sonner)' };
+
+<DocHeader
+	title="Toast (Sonner)"
+	description="A brief, non-blocking message about something that just happened, shown in a stack at the edge of the screen."
+	source="components/ui/sonner"
+	imports={['Toaster']}
+	primitive={{ name: 'Sonner', href: 'https://sonner.emilkowal.ski' }}
+/>
+
+## Setup
+
+WoldUI exports one thing here: `Toaster`, the stack that toasts appear in. Mount it once, near the root of the app, so every page shares it. It follows the theme from `next-themes` and takes WoldUI's popover colours and radius.
+
+```tsx
+import { Toaster } from '@woldui/react/components/ui/sonner';
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+	return (
+		<html lang="en">
+			<body>
+				{children}
+				<Toaster />
+			</body>
+		</html>
+	);
+}
+```
+
+Then call `toast()` from anywhere. It comes from the `sonner` package itself, not from WoldUI, and needs no provider or hook.
+
+## Usage
+
+<Example name="sonner/usage">
+	<Usage />
+</Example>
+
+## Types
+
+`toast.success`, `toast.info`, `toast.warning` and `toast.error` each get their own icon.
+
+<Example name="sonner/types">
+	<Types />
+</Example>
+
+## Description and action
+
+The second argument takes a `description` and an `action` button, such as an undo.
+
+<Example name="sonner/action">
+	<Action />
+</Example>
+
+## Promise
+
+`toast.promise` shows a loading toast, then turns it into a success or error toast when the promise settles.
+
+<Example name="sonner/promise">
+	<PromiseToast />
+</Example>
+
+## Updating a toast
+
+Every toast call returns an id. Pass it back as `id` to replace that toast in place instead of stacking a new one.
+
+<Example name="sonner/update">
+	<Update />
+</Example>
+
+<Callout tone="warning">
+	`Toaster` reads the theme with `useTheme()` from `next-themes`. Outside a `ThemeProvider` it falls
+	back to the system theme, so pass `theme` yourself if your app manages dark mode another way.
+</Callout>
+
+## Accessibility
+
+- The toaster is a labelled region, and new toasts are announced through a polite live region, so they do not interrupt what a screen reader is saying.
+- Alt+T moves focus to the toast stack, so keyboard users can reach an action button before the toast times out.
+- Hovering or focusing the stack pauses the timers.
+- A toast disappears on its own. Never put the only route to something important in one: an undo is fine, a required decision is not.
+- For errors the user must act on, prefer an inline [Alert](/docs/components/alert) that stays on the page.
+
+## API
+
+<PropsTable
+	of="components/ui/sonner#Toaster"
+	inherits={{ name: 'Sonner Toaster', href: 'https://sonner.emilkowal.ski/toaster' }}
+/>

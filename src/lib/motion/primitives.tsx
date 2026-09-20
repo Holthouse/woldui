@@ -24,7 +24,7 @@
 
 import * as React from 'react';
 import { AnimatePresence, motion, useReducedMotion, type Variants } from 'motion/react';
-import { fadeIn, slideUp, stagger } from './variants.js';
+import { fadeIn, slideUp, stagger } from './variants.ts';
 import { cn } from '@woldui/react/lib/utils';
 
 /** Never fires: this store's value is constant per environment. */

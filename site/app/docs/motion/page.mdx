@@ -1,0 +1,79 @@
+import RevealExample from '@/content/examples/motion/reveal';
+import StaggerExample from '@/content/examples/motion/stagger';
+import VariantsExample from '@/content/examples/motion/variants';
+import TokensExample from '@/content/examples/motion/tokens';
+
+export const metadata = { title: 'Motion' };
+
+<DocHeader
+	title="Motion"
+	description="Tokens, named variants and three primitives — Reveal, Stagger and Fade — that animate on the client, respect reduced motion, and never render invisible on the server."
+	source="lib/motion/primitives"
+	imports={['Reveal', 'Stagger', 'Fade']}
+	primitive={{ name: 'Motion', href: 'https://motion.dev' }}
+/>
+
+## Reveal
+
+`Reveal` animates its child in once, after mount. The default is `slideUp`.
+
+<Example name="motion/reveal">
+	<RevealExample />
+</Example>
+
+## Stagger
+
+`Stagger` plays its `Reveal` children one after another, 40ms apart.
+
+<Example name="motion/stagger">
+	<StaggerExample />
+</Example>
+
+## Variants
+
+Pass a named variant from `@woldui/react/lib/motion/variants`: `slideUp`, `fadeIn` or `scaleIn`. `Fade` is `Reveal` with `fadeIn`.
+
+<Example name="motion/variants">
+	<VariantsExample />
+</Example>
+
+## Tokens
+
+Durations, easings and springs live in `@woldui/react/lib/motion/tokens`. When the primitives can't express a movement, import `motion` directly — and take the timing from the tokens, the way nothing hardcodes a hex colour.
+
+<Example name="motion/tokens">
+	<TokensExample />
+</Example>
+
+| Token              | Value                     | Use                           |
+| ------------------ | ------------------------- | ----------------------------- |
+| `duration.instant` | 100ms                     | State flips: checkbox, toggle |
+| `duration.fast`    | 150ms                     | Hover and focus               |
+| `duration.base`    | 200ms                     | Dialogs, popovers, list items |
+| `duration.slow`    | 300ms                     | Sheets and drawers            |
+| `easing.out`       | `[0.16, 1, 0.3, 1]`       | Anything arriving             |
+| `spring.snappy`    | stiffness 400, damping 30 | Small, physical movement      |
+
+## The rules
+
+- **The server renders the final, visible state.** Animation starts on the client after mount. Rendering `initial="hidden"` straight away would ship `opacity:0` in the HTML, invisible until React loads.
+- **Reduced motion collapses the animation.** Anyone who asks their OS to reduce motion sees the end state immediately, not a faster animation.
+- **One guard per kind.** The primitives guard Framer Motion. A CSS rule in the theme guards CSS transitions and keyframes, including the button ripple and press.
+- **Motion never carries meaning on its own.** If an animation is the only sign something happened, the UI is broken for anyone who doesn't see it.
+
+## CSS or Framer Motion?
+
+If it can be done in CSS, it is: presses, hovers and overlay entrances keyed off Radix's `data-state`. Framer Motion is for movement between elements (the sliding tab indicator uses `layoutId`) and for orchestration across children (`Stagger`).
+
+## API
+
+| Component | Prop        | Type                                      | Default   |
+| --------- | ----------- | ----------------------------------------- | --------- |
+| `Reveal`  | `variants`  | `Variants`                                | `slideUp` |
+|           | `as`        | `'div' \| 'li' \| 'section' \| 'article'` | `'div'`   |
+|           | `className` | `string`                                  | —         |
+| `Stagger` | `as`        | `'div' \| 'ul' \| 'ol'`                   | `'div'`   |
+|           | `className` | `string`                                  | —         |
+| `Fade`    | `className` | `string`                                  | —         |
+
+All three take `children`. `AnimatePresence` is re-exported for exit animations.

@@ -1,0 +1,46 @@
+import Usage from '@/content/examples/checkbox/usage';
+import WithDescription from '@/content/examples/checkbox/with-description';
+
+export const metadata = { title: 'Checkbox' };
+
+<DocHeader
+	title="Checkbox"
+	description="Turns one option on or off, on its own or as one of several independent choices."
+	source="components/ui/checkbox"
+	imports={['Checkbox']}
+	primitive={{
+		name: 'Radix Checkbox',
+		href: 'https://www.radix-ui.com/primitives/docs/components/checkbox'
+	}}
+/>
+
+## Usage
+
+<Example name="checkbox/usage">
+	<Usage />
+</Example>
+
+## With a description
+
+Lay a checkbox out with [Field Layout](/docs/components/field/) to give it a title and a line of help text.
+
+<Example name="checkbox/with-description">
+	<WithDescription />
+</Example>
+
+## Accessibility
+
+- It renders a `<button role="checkbox">` with `aria-checked`, so Space toggles it and it joins the tab order.
+- Give it a `Label` with a matching `htmlFor`. Clicking the label toggles the box, and the hit area extends past the 16px box itself.
+- Link help text with `aria-describedby`, and mark an invalid box with `aria-invalid`.
+- Inside a `<form>`, a hidden native checkbox carries `name` and `value`, so it submits like a native one.
+
+## API
+
+<PropsTable
+	of="components/ui/checkbox#Checkbox"
+	inherits={{
+		name: 'Radix Checkbox Root',
+		href: 'https://www.radix-ui.com/primitives/docs/components/checkbox#root'
+	}}
+/>

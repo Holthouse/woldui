@@ -1,0 +1,102 @@
+import Usage from '@/content/examples/dialog/usage';
+import Form from '@/content/examples/dialog/form';
+import Controlled from '@/content/examples/dialog/controlled';
+import Destructive from '@/content/examples/dialog/destructive';
+import Scrolling from '@/content/examples/dialog/scrolling';
+import CloseButton from '@/content/examples/dialog/close-button';
+
+export const metadata = { title: 'Dialog' };
+
+<DocHeader
+	title="Dialog"
+	description="A window over the page that takes focus until it is dismissed. Reach for it when a task needs the user's full attention but should not cost them their place."
+	source="components/ui/dialog"
+	imports={[
+		'Dialog',
+		'DialogTrigger',
+		'DialogContent',
+		'DialogHeader',
+		'DialogTitle',
+		'DialogDescription',
+		'DialogFooter',
+		'DialogClose'
+	]}
+	primitive={{
+		name: 'Radix Dialog',
+		href: 'https://www.radix-ui.com/primitives/docs/components/dialog'
+	}}
+/>
+
+## Usage
+
+<Example name="dialog/usage">
+	<Usage />
+</Example>
+
+The content scales up from 90% as it fades in, over a blurred backdrop, and grows slightly as it fades out on close. `DialogClose` wraps any button that should dismiss it.
+
+## With a form
+
+Put the `<form>` inside `DialogContent` so the footer's submit button belongs to it. Here the dialog is controlled, so it closes only once the name validates. The `Field` atom wires the label, `aria-invalid` and the error message.
+
+<Example name="dialog/form">
+	<Form />
+</Example>
+
+## Controlled
+
+Pass `open` and `onOpenChange` to drive the dialog from your own state. You need this when the thing that opens it is not a `DialogTrigger`, such as a menu item: a trigger inside a menu is unmounted when the menu closes, taking the dialog with it.
+
+<Example name="dialog/controlled">
+	<Controlled />
+</Example>
+
+## Destructive confirmation
+
+To confirm something irreversible, use [Alert Dialog](/docs/components/alert-dialog) instead. It has the same look, but clicking outside does not dismiss it, and it opens with focus on Cancel, so the user has to make an explicit choice.
+
+<Example name="dialog/destructive">
+	<Destructive />
+</Example>
+
+## Long content
+
+The dialog grows with its content. When the content could be taller than the screen, cap the height and let only the body scroll, so the title and the actions stay in view.
+
+<Example name="dialog/scrolling">
+	<Scrolling />
+</Example>
+
+## Close button
+
+`DialogContent` draws a close button in the corner by default. `showCloseButton={false}` removes it. `DialogFooter` has its own `showCloseButton`, which adds a labelled Close button to the footer instead.
+
+<Example name="dialog/close-button">
+	<CloseButton />
+</Example>
+
+## Accessibility
+
+- Focus moves into the dialog when it opens and is trapped there: Tab and Shift+Tab cycle through its controls only, and the page behind is hidden from screen readers.
+- Escape closes it, as does clicking the backdrop. When it closes, focus returns to the `DialogTrigger` that opened it. A controlled dialog with no trigger returns focus to whatever had it before; use `onCloseAutoFocus` on `DialogContent` to send it somewhere specific.
+- `DialogTitle` is required: it becomes the dialog's accessible name, and Radix warns in development if it is missing. If your design has no visible title, keep it and hide it with `className="sr-only"`. `DialogDescription` is announced as the description. Leave it out only if you also pass `aria-describedby={undefined}` to `DialogContent`.
+- The corner close button is an icon with a screen-reader-only "Close" label. If you remove it with `showCloseButton={false}`, keep another visible way out, such as a footer button.
+- The entrance and exit are CSS animations. Under `prefers-reduced-motion`, the global guard collapses them, so the dialog appears and disappears at its final size with no scale or fade.
+
+## API
+
+<PropsTable
+	of="components/ui/dialog#Dialog"
+	inherits={{
+		name: 'Radix Dialog Root',
+		href: 'https://www.radix-ui.com/primitives/docs/components/dialog#root'
+	}}
+/>
+<PropsTable
+	of="components/ui/dialog#DialogContent"
+	inherits={{
+		name: 'Radix Dialog Content',
+		href: 'https://www.radix-ui.com/primitives/docs/components/dialog#content'
+	}}
+/>
+<PropsTable of="components/ui/dialog#DialogFooter" inherits={{ name: 'the native <div>' }} />

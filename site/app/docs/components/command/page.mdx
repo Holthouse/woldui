@@ -1,0 +1,66 @@
+import Usage from '@/content/examples/command/usage';
+import CommandDialogExample from '@/content/examples/command/dialog';
+
+export const metadata = { title: 'Command' };
+
+<DocHeader
+	title="Command"
+	description="A searchable list of commands you filter by typing. Use it inline, or in a dialog as a command palette."
+	source="components/ui/command"
+	imports={[
+		'Command',
+		'CommandDialog',
+		'CommandInput',
+		'CommandList',
+		'CommandEmpty',
+		'CommandGroup',
+		'CommandItem',
+		'CommandShortcut',
+		'CommandSeparator'
+	]}
+	primitive={{ name: 'cmdk', href: 'https://cmdk.paco.me' }}
+/>
+
+## Usage
+
+<Example name="command/usage">
+	<Usage />
+</Example>
+
+Typing filters and ranks the items. `CommandEmpty` shows when nothing matches, and groups with no matches hide themselves. `CommandShortcut` only displays a shortcut: it does not bind the key.
+
+## Command palette
+
+`CommandDialog` puts the same parts in a [Dialog](/docs/components/dialog), positioned in the top third of the screen. The usual way to open it is Ctrl+K (Cmd+K on a Mac), which you bind yourself, as here. Keep a visible button as well, because a shortcut alone cannot be discovered.
+
+<Example name="command/dialog">
+	<CommandDialogExample />
+</Example>
+
+## Accessibility
+
+- The input is a combobox that controls the list. Arrow keys move through the items, Enter runs the selected one, and the active item is announced as you move.
+- The selection is virtual: focus stays in the input, so the user can keep typing at any point.
+- `CommandDialog` gives the dialog a screen-reader-only title and description. Change them with its `title` and `description` props to describe your palette.
+- Icons in items are decorative: give them `aria-hidden` and let the item's text be its name.
+
+## API
+
+<PropsTable
+	of="components/ui/command#Command"
+	inherits={{ name: 'cmdk Command', href: 'https://github.com/pacocoursey/cmdk#command-cmdk-root' }}
+/>
+<PropsTable
+	of="components/ui/command#CommandDialog"
+	inherits={{
+		name: 'Radix Dialog Root',
+		href: 'https://www.radix-ui.com/primitives/docs/components/dialog#root'
+	}}
+/>
+<PropsTable
+	of="components/ui/command#CommandItem"
+	inherits={{
+		name: 'cmdk Command.Item',
+		href: 'https://github.com/pacocoursey/cmdk#item-cmdk-item-data-disabled-data-selected'
+	}}
+/>

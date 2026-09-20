@@ -1,0 +1,47 @@
+import Usage from '@/content/examples/toggle/usage';
+import Variants from '@/content/examples/toggle/variants';
+
+export const metadata = { title: 'Toggle' };
+
+<DocHeader
+	title="Toggle"
+	description="A button that stays pressed until pressed again, such as Bold in a text toolbar."
+	source="components/ui/toggle"
+	imports={['Toggle']}
+	primitive={{
+		name: 'Radix Toggle',
+		href: 'https://www.radix-ui.com/primitives/docs/components/toggle'
+	}}
+/>
+
+## Usage
+
+<Example name="toggle/usage">
+	<Usage />
+</Example>
+
+## Variants and sizes
+
+`variant` is `default` or `outline`, and `size` is `sm`, `default` or `lg`. A toggle can hold text as well as an icon.
+
+<Example name="toggle/variants">
+	<Variants />
+</Example>
+
+For a row of toggles that work together, use [Toggle Group](/docs/components/toggle-group/).
+
+## Accessibility
+
+- It renders a `<button>` with `aria-pressed`, so Space and Enter toggle it and a screen reader announces "pressed" or "not pressed".
+- An icon-only toggle needs an `aria-label`. Keep it constant ("Bold"); the pressed state is announced separately.
+- Use `pressed` and `onPressedChange` to control it, or `defaultPressed` to set where it starts.
+
+## API
+
+<PropsTable
+	of="components/ui/toggle#Toggle"
+	inherits={{
+		name: 'Radix Toggle Root',
+		href: 'https://www.radix-ui.com/primitives/docs/components/toggle#root'
+	}}
+/>

@@ -69,6 +69,28 @@ jobs:
       # that TypeScript resolves the types a consumer would get.
       - run: pnpm check:package
 
+  site:
+    name: Site
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'pnpm'
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm --filter woldui-site lint
+      # Generates the props tables, type-checks and does the static export — the same
+      # build the Pages workflow deploys, so a broken page fails here first.
+      - run: pnpm --filter woldui-site build
+      # The site must never ride along in the npm package.
+      - name: Package excludes the site
+        run: |
+          if npm pack --dry-run --json | grep -q '"path": "site/'; then
+            echo 'site/ files would be published'; exit 1
+          fi
+
   test:
     name: Test
     runs-on: ubuntu-latest

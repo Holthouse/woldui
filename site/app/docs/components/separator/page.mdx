@@ -1,0 +1,37 @@
+import Usage from '@/content/examples/separator/usage';
+
+export const metadata = { title: 'Separator' };
+
+<DocHeader
+	title="Separator"
+	description="A thin rule between pieces of content, horizontal or vertical."
+	source="components/ui/separator"
+	imports={['Separator']}
+	primitive={{
+		name: 'Radix Separator',
+		href: 'https://www.radix-ui.com/primitives/docs/components/separator'
+	}}
+/>
+
+## Usage
+
+<Example name="separator/usage">
+	<Usage />
+</Example>
+
+A horizontal separator fills the width. `orientation="vertical"` stretches to the height of its row, so give the row a height.
+
+## Accessibility
+
+- It is decorative by default and hidden from assistive tech, because most rules only separate visually.
+- When the break is meaningful, as between two groups of menu items, pass `decorative={false}` and it becomes a `separator` role with `aria-orientation`.
+
+## API
+
+<PropsTable
+	of="components/ui/separator#Separator"
+	inherits={{
+		name: 'Radix Separator Root',
+		href: 'https://www.radix-ui.com/primitives/docs/components/separator#root'
+	}}
+/>

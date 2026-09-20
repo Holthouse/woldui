@@ -1,0 +1,76 @@
+import Usage from '@/content/examples/switch/usage';
+import Sizes from '@/content/examples/switch/sizes';
+import States from '@/content/examples/switch/states';
+import SettingsList from '@/content/examples/switch/settings-list';
+import Controlled from '@/content/examples/switch/controlled';
+
+export const metadata = { title: 'Switch' };
+
+<DocHeader
+	title="Switch"
+	description="Turns a setting on or off, with an immediate effect. HeroUI's look: a pill track and a thumb that springs into place."
+	source="components/ui/switch"
+	imports={['Switch']}
+	primitive={{
+		name: 'Radix Switch',
+		href: 'https://www.radix-ui.com/primitives/docs/components/switch'
+	}}
+/>
+
+## Usage
+
+<Example name="switch/usage">
+	<Usage />
+</Example>
+
+Use a switch when the change applies at once, like a light switch. When the choice only takes effect on submit, use a [Checkbox](/docs/components/checkbox/).
+
+## Sizes
+
+`size` is `default` or `sm`.
+
+<Example name="switch/sizes">
+	<Sizes />
+</Example>
+
+## States
+
+`disabled` dims the switch and stops it responding, whether it is on or off. `aria-invalid` draws a danger ring; pair it with a message the switch describes itself with.
+
+<Example name="switch/states">
+	<States />
+</Example>
+
+## In a settings list
+
+With [Field Layout](/docs/components/field/), each setting gets a title and a line of help text, with the switch aligned to the end of the row.
+
+<Example name="switch/settings-list">
+	<SettingsList />
+</Example>
+
+## Controlled
+
+Pass `checked` and `onCheckedChange` to own the state, for instance to save the setting or show what it does.
+
+<Example name="switch/controlled">
+	<Controlled />
+</Example>
+
+## Accessibility
+
+- It renders a `<button role="switch">` with `aria-checked`. Space and Enter toggle it, and it joins the tab order.
+- Give it a `Label` with a matching `htmlFor`. Clicking the label toggles the switch, and the hit area extends past the track.
+- Keep the label constant ("Auto-save drafts"), not "On" or "Off": the state is already announced.
+- Link help text with `aria-describedby` so it is read when the switch takes focus.
+- The focus ring is a 2px outline offset from the track, on keyboard focus only. Under `prefers-reduced-motion` the thumb moves without its spring.
+
+## API
+
+<PropsTable
+	of="components/ui/switch#Switch"
+	inherits={{
+		name: 'Radix Switch Root',
+		href: 'https://www.radix-ui.com/primitives/docs/components/switch#root'
+	}}
+/>

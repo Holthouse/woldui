@@ -1,6 +1,10 @@
 pnpm-lock.yaml
 dist/
 storybook-static/
+site/.next/
+site/out/
+site/generated/
+site/next-env.d.ts
 CHANGELOG.md
 .changeset/*.md
 
