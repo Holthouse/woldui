@@ -6,7 +6,7 @@
  */
 
 import type { Variants } from 'motion/react';
-import { duration, easing, staggerStep, transition } from './tokens.js';
+import { duration, easing, staggerStep, transition } from './tokens.ts';
 
 export const fadeIn: Variants = {
 	hidden: { opacity: 0 },
