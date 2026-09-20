@@ -78,6 +78,8 @@
 		"check:package": "publint --strict && attw --pack . --profile esm-only --entrypoints ./components/ui/button ./components/ui/sidebar ./components/atoms/field ./lib/motion/primitives ./lib/motion/tokens ./lib/utils ./hooks/use-mobile",
 		"storybook": "storybook dev -p 6007",
 		"build-storybook": "storybook build",
+		"site:dev": "pnpm --filter woldui-site dev",
+		"site:build": "pnpm --filter woldui-site build",
 		"changeset": "changeset",
 		"release": "changeset publish"
 	},

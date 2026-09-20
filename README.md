@@ -5,6 +5,8 @@ colour scales, layered shadows and springy motion) built on
 [shadcn/ui](https://ui.shadcn.com) and [Radix](https://www.radix-ui.com). It doesn't
 depend on HeroUI.
 
+**[Documentation and live examples →](https://holthouse.github.io/woldui)**
+
 - 60+ components: buttons, forms, overlays, navigation, data display, charts
 - Layout and typography atoms: `Stack`, `Inline`, `Grid`, `Heading`, `Text`, `Icon`, and an
   accessible `Field`
@@ -95,16 +97,17 @@ there's no barrel, and how stories double as tests.
 
 Node 26 and pnpm 10 (`.nvmrc`, `packageManager`).
 
-| Command              | Does                                                       |
-| -------------------- | ---------------------------------------------------------- |
-| `pnpm storybook`     | Storybook on port 6007                                     |
-| `pnpm test`          | browser tests, and every story as a render + axe test      |
-| `pnpm check`         | typecheck                                                  |
-| `pnpm lint`          | Prettier + ESLint                                          |
-| `pnpm knip`          | dead code and unused dependencies                          |
-| `pnpm build`         | compile to `dist/`                                         |
-| `pnpm check:package` | publint + are-the-types-wrong against the packed output    |
-| `pnpm changeset`     | describe your change for the changelog (see `.changeset/`) |
+| Command              | Does                                                        |
+| -------------------- | ----------------------------------------------------------- |
+| `pnpm storybook`     | Storybook on port 6007                                      |
+| `pnpm test`          | browser tests, and every story as a render + axe test       |
+| `pnpm check`         | typecheck                                                   |
+| `pnpm lint`          | Prettier + ESLint                                           |
+| `pnpm knip`          | dead code and unused dependencies                           |
+| `pnpm build`         | compile to `dist/`                                          |
+| `pnpm check:package` | publint + are-the-types-wrong against the packed output     |
+| `pnpm site:dev`      | the docs site (`site/`) on port 3100, rendering `src/` live |
+| `pnpm changeset`     | describe your change for the changelog (see `.changeset/`)  |
 
 Inside this repo, the package's own imports (`@woldui/react/...`) resolve to `src/`
 through a `woldui-source` export condition, so tests and Storybook need no build.
