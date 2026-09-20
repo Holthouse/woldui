@@ -12,7 +12,8 @@ import {
 	CardTitle
 } from '@woldui/react/components/ui/card';
 import { Input } from '@woldui/react/components/ui/input';
-import { Reveal, Stagger } from '@woldui/react/lib/motion/primitives';
+import { AnimatePresence, Reveal, Stagger } from '@woldui/react/lib/motion/primitives';
+import { scaleIn } from '@woldui/react/lib/motion/variants';
 
 const palettes = [
 	{ name: 'Blue', primary: undefined },
@@ -56,13 +57,20 @@ function MotionDemo() {
 	const [run, setRun] = React.useState(0);
 	return (
 		<div className="flex flex-col gap-3">
-			<Stagger key={run} className="flex gap-2">
-				{[0, 1, 2, 3, 4].map((i) => (
-					<Reveal key={i}>
-						<div className="size-9 rounded-xl bg-linear-to-br from-primary-300 to-secondary-400" />
-					</Reveal>
-				))}
-			</Stagger>
+			{/*
+			 * AnimatePresence, so a replay is not a hard cut: the tiles scale out in turn,
+			 * then the next set scales back in. Without it the old tiles are removed in one
+			 * frame and the replay reads as a glitch.
+			 */}
+			<AnimatePresence mode="wait">
+				<Stagger key={run} className="flex gap-2">
+					{[0, 1, 2, 3, 4].map((i) => (
+						<Reveal key={i} variants={scaleIn}>
+							<div className="size-9 rounded-lg bg-linear-to-br from-primary-300 to-secondary-400" />
+						</Reveal>
+					))}
+				</Stagger>
+			</AnimatePresence>
 			<Button size="sm" variant="flat" className="self-start" onClick={() => setRun((n) => n + 1)}>
 				Replay stagger
 			</Button>
