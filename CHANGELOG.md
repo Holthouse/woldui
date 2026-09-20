@@ -1,5 +1,11 @@
 # @woldui/react
 
+## 0.1.3
+
+### Patch Changes
+
+- 3e6d0e5: `Stagger` now staggers. Its children animated in at the same moment, because `staggerChildren` only drives a child that declares no `animate` of its own and every `Reveal` declares one. Each `Reveal` inside a `Stagger` now delays itself by its position instead.
+
 ## 0.1.2
 
 ### Patch Changes
