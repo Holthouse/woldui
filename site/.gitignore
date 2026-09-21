@@ -3,3 +3,7 @@ out/
 generated/
 next-env.d.ts
 *.tsbuildinfo
+
+# Rendered from app/icon.svg by scripts/icons.mjs
+app/icon1.png
+app/apple-icon.png
