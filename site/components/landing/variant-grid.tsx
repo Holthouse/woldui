@@ -7,7 +7,9 @@ const tones = ['default', 'primary', 'secondary', 'success', 'warning', 'danger'
 export function VariantGrid() {
 	return (
 		<div className="overflow-x-auto rounded-3xl border border-border bg-content1/50 p-6 sm:p-8">
-			<div className="flex min-w-max flex-col gap-3">
+			{/* w-max + mx-auto: centred when the card is wider than the grid; when it is narrower, the
+			    auto margins collapse to zero and the card scrolls sideways instead. */}
+			<div className="mx-auto flex w-max flex-col gap-3">
 				{variants.map((variant) => (
 					<div key={variant} className="flex items-center gap-3">
 						<code className="w-20 shrink-0 font-mono text-xs text-muted-foreground">{variant}</code>
